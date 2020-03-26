@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1269A243242D275400EC594F /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269A242242D275400EC594F /* SceneCoordinator.swift */; };
 		126FC83624292921008600D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC83524292921008600D4 /* AppDelegate.swift */; };
 		126FC83824292921008600D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC83724292921008600D4 /* SceneDelegate.swift */; };
 		126FC83A24292921008600D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC83924292921008600D4 /* ViewController.swift */; };
@@ -14,6 +15,11 @@
 		126FC83F24292922008600D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 126FC83E24292922008600D4 /* Assets.xcassets */; };
 		126FC84224292922008600D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 126FC84024292922008600D4 /* LaunchScreen.storyboard */; };
 		126FC84D24292922008600D4 /* CultivateMVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC84C24292922008600D4 /* CultivateMVPTests.swift */; };
+		126FC859242929C7008600D4 /* ThoughtOfDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC858242929C7008600D4 /* ThoughtOfDayViewModel.swift */; };
+		126FC85B24292AFE008600D4 /* ThoughtOfDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85A24292AFE008600D4 /* ThoughtOfDayViewController.swift */; };
+		126FC85D24292B27008600D4 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85C24292B27008600D4 /* Thought.swift */; };
+		126FC860242A94D5008600D4 /* JournalOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85F242A94D5008600D4 /* JournalOptionsViewController.swift */; };
+		126FC862242A94E9008600D4 /* JournalOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC861242A94E9008600D4 /* JournalOptionsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1269A242242D275400EC594F /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		126FC83224292921008600D4 /* CultivateMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CultivateMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		126FC83524292921008600D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		126FC83724292921008600D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +45,11 @@
 		126FC84824292922008600D4 /* CultivateMVPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CultivateMVPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		126FC84C24292922008600D4 /* CultivateMVPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivateMVPTests.swift; sourceTree = "<group>"; };
 		126FC84E24292922008600D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		126FC858242929C7008600D4 /* ThoughtOfDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtOfDayViewModel.swift; sourceTree = "<group>"; };
+		126FC85A24292AFE008600D4 /* ThoughtOfDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtOfDayViewController.swift; sourceTree = "<group>"; };
+		126FC85C24292B27008600D4 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
+		126FC85F242A94D5008600D4 /* JournalOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalOptionsViewController.swift; sourceTree = "<group>"; };
+		126FC861242A94E9008600D4 /* JournalOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalOptionsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +91,9 @@
 		126FC83424292921008600D4 /* CultivateMVP */ = {
 			isa = PBXGroup;
 			children = (
+				126FC863242A95D2008600D4 /* Coordinator */,
+				126FC85E24293C46008600D4 /* JournalOptionsScene */,
+				126FC85724292939008600D4 /* ThoughtOfDayScene */,
 				126FC83524292921008600D4 /* AppDelegate.swift */,
 				126FC83724292921008600D4 /* SceneDelegate.swift */,
 				126FC83924292921008600D4 /* ViewController.swift */,
@@ -97,6 +112,33 @@
 				126FC84E24292922008600D4 /* Info.plist */,
 			);
 			path = CultivateMVPTests;
+			sourceTree = "<group>";
+		};
+		126FC85724292939008600D4 /* ThoughtOfDayScene */ = {
+			isa = PBXGroup;
+			children = (
+				126FC858242929C7008600D4 /* ThoughtOfDayViewModel.swift */,
+				126FC85A24292AFE008600D4 /* ThoughtOfDayViewController.swift */,
+				126FC85C24292B27008600D4 /* Thought.swift */,
+			);
+			path = ThoughtOfDayScene;
+			sourceTree = "<group>";
+		};
+		126FC85E24293C46008600D4 /* JournalOptionsScene */ = {
+			isa = PBXGroup;
+			children = (
+				126FC85F242A94D5008600D4 /* JournalOptionsViewController.swift */,
+				126FC861242A94E9008600D4 /* JournalOptionsViewModel.swift */,
+			);
+			path = JournalOptionsScene;
+			sourceTree = "<group>";
+		};
+		126FC863242A95D2008600D4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1269A242242D275400EC594F /* SceneCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +242,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1269A243242D275400EC594F /* SceneCoordinator.swift in Sources */,
+				126FC860242A94D5008600D4 /* JournalOptionsViewController.swift in Sources */,
+				126FC85B24292AFE008600D4 /* ThoughtOfDayViewController.swift in Sources */,
+				126FC85D24292B27008600D4 /* Thought.swift in Sources */,
+				126FC862242A94E9008600D4 /* JournalOptionsViewModel.swift in Sources */,
+				126FC859242929C7008600D4 /* ThoughtOfDayViewModel.swift in Sources */,
 				126FC83A24292921008600D4 /* ViewController.swift in Sources */,
 				126FC83624292921008600D4 /* AppDelegate.swift in Sources */,
 				126FC83824292921008600D4 /* SceneDelegate.swift in Sources */,
