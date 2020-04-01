@@ -7,6 +7,8 @@ target 'CultivateMVP' do
 
   # Pods for CultivateMVP
 pod 'RxSwift', '~> 4.5'
+pod 'RxCocoa', '~> 5'
+
 
   target 'CultivateMVPTests' do
     inherit! :search_paths

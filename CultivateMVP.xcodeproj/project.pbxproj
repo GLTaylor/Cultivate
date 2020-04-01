@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		124981C92434AE5C008CE4AF /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124981C82434AE5C008CE4AF /* Entry.swift */; };
 		1269A243242D275400EC594F /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269A242242D275400EC594F /* SceneCoordinator.swift */; };
 		1269A245242D2C8C00EC594F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269A244242D2C8C00EC594F /* Scene.swift */; };
 		126FC83624292921008600D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC83524292921008600D4 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		124981C82434AE5C008CE4AF /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		1269A242242D275400EC594F /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		1269A244242D2C8C00EC594F /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		126FC83224292921008600D4 /* CultivateMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CultivateMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		124981C72434AD1E008CE4AF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				126FC85C24292B27008600D4 /* Thought.swift */,
+				124981C82434AE5C008CE4AF /* Entry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		126FC82924292921008600D4 = {
 			isa = PBXGroup;
 			children = (
@@ -105,9 +116,10 @@
 		126FC83424292921008600D4 /* CultivateMVP */ = {
 			isa = PBXGroup;
 			children = (
+				124981C72434AD1E008CE4AF /* Models */,
 				126FC863242A95D2008600D4 /* Coordinator */,
-				126FC85E24293C46008600D4 /* JournalOptionsScene */,
 				126FC85724292939008600D4 /* ThoughtOfDayScene */,
+				126FC85E24293C46008600D4 /* JournalOptionsScene */,
 				126FC83524292921008600D4 /* AppDelegate.swift */,
 				126FC83724292921008600D4 /* SceneDelegate.swift */,
 				126FC83924292921008600D4 /* ViewController.swift */,
@@ -133,7 +145,6 @@
 			children = (
 				126FC858242929C7008600D4 /* ThoughtOfDayViewModel.swift */,
 				126FC85A24292AFE008600D4 /* ThoughtOfDayViewController.swift */,
-				126FC85C24292B27008600D4 /* Thought.swift */,
 			);
 			path = ThoughtOfDayScene;
 			sourceTree = "<group>";
@@ -353,6 +364,7 @@
 				126FC859242929C7008600D4 /* ThoughtOfDayViewModel.swift in Sources */,
 				126FC83A24292921008600D4 /* ViewController.swift in Sources */,
 				126FC83624292921008600D4 /* AppDelegate.swift in Sources */,
+				124981C92434AE5C008CE4AF /* Entry.swift in Sources */,
 				126FC83824292921008600D4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
