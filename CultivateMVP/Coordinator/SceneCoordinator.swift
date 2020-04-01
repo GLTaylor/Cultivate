@@ -7,10 +7,10 @@ protocol SceneCoordinatorType {
     init(window: UIWindow,  factory: SceneFactory)
 
     @discardableResult
-    func transition(to scene: Scene, type: SceneTransitionType) -> Completable
+    func transition(to scene: Scene, type: SceneTransitionType) -> Observable<Void>
 
     @discardableResult
-    func pop(animated: Bool) -> Completable
+    func pop(animated: Bool) -> Observable<Void>
 }
 
 
@@ -25,8 +25,16 @@ struct SceneCoordinator: SceneCoordinatorType {
         vCFactory = factory
     }
 
+    static func actualViewController(for viewController: UIViewController) -> UIViewController {
+      if let navigationController = viewController as? UINavigationController {
+        return navigationController.viewControllers.first!
+      } else {
+        return viewController
+      }
+    }
+
     // finish
-    
+    @discardableResult
     func transition(to scene: Scene, type: SceneTransitionType) -> Observable<Void> {
         let subject = PublishSubject<Void>()
         let viewController = vCFactory.make(scene: scene)
@@ -46,9 +54,11 @@ struct SceneCoordinator: SceneCoordinatorType {
             // not sure if this one is right
 
             let currentVC = SceneCoordinator.actualViewController(for: viewController)
-            currentVC.present(viewController, annimated: true) {
+            currentVC.present(viewController, animated: true) {
                 subject.onCompleted()
             }
+            // def wrong, just need to handle return for now
+            return .just(())
             //Todo: set current viewController to the right one again?
         }
     }

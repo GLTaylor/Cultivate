@@ -4,16 +4,19 @@ import UIKit
 
 
 class JournalOptionsViewContoller: UIViewController {
+
     private let viewModel: JournalOptionsViewModelType
 
     init(viewModel: JournalOptionsViewModelType){
-        self.viewModel = viewModel
-    }
-    
+          self.viewModel = viewModel
+          super.init(nibName: nil, bundle: nil)
+
+      }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+
 
     private let firstLabel: UILabel = {
         let label = UILabel()

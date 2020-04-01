@@ -11,6 +11,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
+
     //I will probably match up dependencies in here. 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -18,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vcFactory = SceneFactory(thoughtOfDayViewModel: ThoughtOfDayViewModel(thoughtOfDay: firstThought), journalOptionsViewModel: JournalOptionsViewModel(entries: [], moodEntry: MoodEntry(moodQuestion: "What's your mood", moodRating: 0)))
         let sceneCoordinator = SceneCoordinator(window: window!, factory: vcFactory)
 
+
+        sceneCoordinator.transition(to: Scene.thoughtOfDay(ThoughtOfDayViewModel(thoughtOfDay: firstThought)), type: .root)
         return true
     }
 

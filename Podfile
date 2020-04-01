@@ -6,7 +6,7 @@ target 'CultivateMVP' do
   use_frameworks!
 
   # Pods for CultivateMVP
-pod 'RxSwift', '~> 4.5'
+pod 'RxSwift', '~> 5'
 pod 'RxCocoa', '~> 5'
 
 
