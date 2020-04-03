@@ -16,7 +16,4 @@ class ViewController: UIViewController {
         print("Hello Taylor")
         _ = Observable.of("Hello RxSwift")
     }
-
-
 }
-

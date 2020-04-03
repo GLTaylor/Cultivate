@@ -1,13 +1,11 @@
-
 import Foundation
 import UIKit
-
 
 class JournalOptionsViewContoller: UIViewController {
 
     private let viewModel: JournalOptionsViewModelType
 
-    init(viewModel: JournalOptionsViewModelType){
+    init(viewModel: JournalOptionsViewModelType) {
           self.viewModel = viewModel
           super.init(nibName: nil, bundle: nil)
 
@@ -15,7 +13,6 @@ class JournalOptionsViewContoller: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 
 
     private let firstLabel: UILabel = {
