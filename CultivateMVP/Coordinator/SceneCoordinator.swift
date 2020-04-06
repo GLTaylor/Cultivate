@@ -2,17 +2,15 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-
 protocol SceneCoordinatorType {
-    init(window: UIWindow,  factory: SceneFactory)
-
+    init(window: UIWindow, factory: SceneFactory)
+    
     @discardableResult
     func transition(to scene: Scene, type: SceneTransitionType) -> Observable<Void>
 
     @discardableResult
     func pop(animated: Bool) -> Observable<Void>
 }
-
 
 struct SceneCoordinator: SceneCoordinatorType {
 
@@ -78,11 +76,7 @@ struct SceneCoordinator: SceneCoordinatorType {
         return subject
     }
 
-
 }
-
-
-
 
 enum SceneTransitionType {
   //can be extended
@@ -91,7 +85,3 @@ enum SceneTransitionType {
   case push       // push view controller to navigation stack
   case modal      // present view controller modally
 }
-
-
-
-

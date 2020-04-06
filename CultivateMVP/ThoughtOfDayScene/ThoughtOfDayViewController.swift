@@ -5,7 +5,7 @@ class ThoughtOfDayViewController: UIViewController {
 
     private let viewModel: ThoughtOfDayViewModelType
 
-    init(viewModel: ThoughtOfDayViewModelType){
+    init(viewModel: ThoughtOfDayViewModelType) {
         self.viewModel = viewModel
         // why was this line down here required? mmm...
         super.init(nibName: nil, bundle: nil)
@@ -51,13 +51,11 @@ class ThoughtOfDayViewController: UIViewController {
         ])
     }
 
-
     override func viewDidLoad() {
          super.viewDidLoad()
          setUpLabelLayout()
          setUpButtonLayout()
     }
-
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

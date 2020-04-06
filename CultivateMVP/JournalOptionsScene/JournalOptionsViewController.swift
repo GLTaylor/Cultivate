@@ -14,7 +14,6 @@ class JournalOptionsViewContoller: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-
     private let firstLabel: UILabel = {
         let label = UILabel()
         label.text = "To be continued"

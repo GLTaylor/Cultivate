@@ -8,7 +8,7 @@ enum Scene {
 
 class SceneFactory {
 
-    private let thoughtOfDayVM : ThoughtOfDayViewModel
+    private let thoughtOfDayVM: ThoughtOfDayViewModel
     private let journalOptionsVM: JournalOptionsViewModel
     // todo: third screen
 
