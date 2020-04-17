@@ -4,7 +4,7 @@ import RxCocoa
 
 protocol SceneCoordinatorType {
     init(window: UIWindow, factory: SceneFactory)
-    
+
     @discardableResult
     func transition(to scene: Scene, type: SceneTransitionType) -> Observable<Void>
 
