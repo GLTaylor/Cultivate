@@ -8,23 +8,26 @@ enum Scene {
 
 class SceneFactory {
 
-    private let thoughtOfDayVM: ThoughtOfDayViewModel
-    private let journalOptionsVM: JournalOptionsViewModel
+    private let thoughtOfDayVMThought: Thought
+    private let journalOptionsVMEntries: [Entry]
+    private let journalOptionsVMMoodEntry: MoodEntry
     // todo: third screen
 
-    // every time I create new scenes I could just add them here?, would be nice
-
-    init(thoughtOfDayViewModel: ThoughtOfDayViewModel, journalOptionsViewModel: JournalOptionsViewModel) {
-        thoughtOfDayVM = thoughtOfDayViewModel
-        journalOptionsVM = journalOptionsViewModel
+   // there must be a better way to do this? Should I create a collection of dependencies and a converter of some kind and initialize with that?
+    init(thoughtOfDayViewModelThought: Thought, journalOptionsViewModelEntries: [Entry], journalOptionsViewModelMoodEntry: MoodEntry) {
+        thoughtOfDayVMThought = thoughtOfDayViewModelThought
+        journalOptionsVMEntries = journalOptionsViewModelEntries
+        journalOptionsVMMoodEntry = journalOptionsViewModelMoodEntry
     }
 
     func make(scene: Scene) -> UIViewController {
         let vc: UIViewController
         switch scene {
-        case .thoughtOfDay(let vm):
+        case .thoughtOfDay:
+            let vm = ThoughtOfDayViewModel(thoughtOfDay: thoughtOfDayVMThought)
             vc = ThoughtOfDayViewController(viewModel: vm)
-        case .journalOptions(let vm):
+        case .journalOptions:
+            let vm = JournalOptionsViewModel(entries: journalOptionsVMEntries, moodEntry: journalOptionsVMMoodEntry)
             vc = JournalOptionsViewContoller(viewModel: vm)
         case .finished:
             // third screen, will set up later
