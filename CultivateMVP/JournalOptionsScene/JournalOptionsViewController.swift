@@ -1,9 +1,37 @@
-//
-//  JournalOptionsViewController.swift
-//  CultivateMVP
-//
-//  Created by Taylor Lindsay on 3/24/20.
-//  Copyright © 2020 Taylor Lindsay. All rights reserved.
-//
-
 import Foundation
+import UIKit
+
+class JournalOptionsViewContoller: UIViewController {
+
+    private let viewModel: JournalOptionsViewModelType
+
+    init(viewModel: JournalOptionsViewModelType) {
+          self.viewModel = viewModel
+          super.init(nibName: nil, bundle: nil)
+
+      }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private let firstLabel: UILabel = {
+        let label = UILabel()
+        label.text = "To be continued"
+        return label
+    }()
+
+    private func setUpLabelLayout() {
+        view.addSubview(firstLabel)
+        firstLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+        firstLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        firstLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+
+    override func viewDidLoad() {
+          super.viewDidLoad()
+          setUpLabelLayout()
+     }
+
+}

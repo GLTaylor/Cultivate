@@ -2,13 +2,9 @@ import Foundation
 
 protocol ThoughtOfDayViewModelType {
     var thoughtOfDay: Thought { get }
-
-    // inputs
-    // outputs
-    // is this necessary?
 }
 
-class ThoughtOfDayViewModel: ThoughtOfDayViewModelType {
+struct ThoughtOfDayViewModel: ThoughtOfDayViewModelType {
     var thoughtOfDay: Thought
 
     init(thoughtOfDay: Thought) {

@@ -1,9 +1,17 @@
-//
-//  JournalOptionsViewModel.swift
-//  CultivateMVP
-//
-//  Created by Taylor Lindsay on 3/24/20.
-//  Copyright © 2020 Taylor Lindsay. All rights reserved.
-//
-
 import Foundation
+
+protocol JournalOptionsViewModelType {
+    var entries: [Entry] { get }
+    var moodEntry: MoodEntry { get }
+}
+
+struct JournalOptionsViewModel: JournalOptionsViewModelType {
+
+    var entries: [Entry]
+    var moodEntry: MoodEntry
+
+    init(entries: [Entry], moodEntry: MoodEntry?) {
+        self.entries = entries
+        self.moodEntry = moodEntry ?? MoodEntry(moodQuestion: "Give mood", moodRating: 0)
+    }
+}

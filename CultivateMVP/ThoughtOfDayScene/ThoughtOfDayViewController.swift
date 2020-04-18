@@ -5,7 +5,7 @@ class ThoughtOfDayViewController: UIViewController {
 
     private let viewModel: ThoughtOfDayViewModelType
 
-    init(viewModel: ThoughtOfDayViewModelType){
+    init(viewModel: ThoughtOfDayViewModelType) {
         self.viewModel = viewModel
         // why was this line down here required? mmm...
         super.init(nibName: nil, bundle: nil)
@@ -13,9 +13,8 @@ class ThoughtOfDayViewController: UIViewController {
 
     private let thoughtLabel: UILabel = {
         let label = UILabel()
-        //label.text = viewModel.thoughtOfday.text
         //later
-        //label.font = M's fancy font
+        label.textColor = .red
         return label
     }()
 
@@ -33,6 +32,7 @@ class ThoughtOfDayViewController: UIViewController {
 
     private func setUpLabelLayout() {
         view.addSubview(thoughtLabel)
+        thoughtLabel.text = viewModel.thoughtOfDay.text
         thoughtLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         thoughtLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -51,13 +51,11 @@ class ThoughtOfDayViewController: UIViewController {
         ])
     }
 
-
     override func viewDidLoad() {
          super.viewDidLoad()
          setUpLabelLayout()
          setUpButtonLayout()
     }
-
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
