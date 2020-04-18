@@ -5,7 +5,7 @@ protocol JournalOptionsViewModelType {
     var moodEntry: MoodEntry { get }
 }
 
-class JournalOptionsViewModel: JournalOptionsViewModelType {
+struct JournalOptionsViewModel: JournalOptionsViewModelType {
 
     var entries: [Entry]
     var moodEntry: MoodEntry

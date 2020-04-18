@@ -6,7 +6,7 @@ enum Scene {
     case finished // Todo
 }
 
-class SceneFactory {
+struct SceneFactory {
 
     private let thoughtOfDayVMThought: Thought
     private let journalOptionsVMEntries: [Entry]

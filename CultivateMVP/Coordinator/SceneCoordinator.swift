@@ -15,12 +15,12 @@ protocol SceneCoordinatorType {
 struct SceneCoordinator: SceneCoordinatorType {
 
     //I think I can put the first one for this in the app delegate
-    private let vCFactory: SceneFactory
+    private let sceneFactory: SceneFactory
     private let navigationController = UINavigationController()
 
     init(window: UIWindow, factory: SceneFactory) {
         window.rootViewController = navigationController
-        vCFactory = factory
+        sceneFactory = factory
     }
 
     static func actualViewController(for viewController: UIViewController) -> UIViewController {
@@ -35,7 +35,7 @@ struct SceneCoordinator: SceneCoordinatorType {
     @discardableResult
     func transition(to scene: Scene, type: SceneTransitionType) -> Observable<Void> {
         let subject = PublishSubject<Void>()
-        let viewController = vCFactory.make(scene: scene)
+        let viewController = sceneFactory.make(scene: scene)
         switch type {
         case .root:
             navigationController.setViewControllers([viewController], animated: false)
