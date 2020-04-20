@@ -24,9 +24,7 @@ class ThoughtOfDayViewController: UIViewController {
         //later
         //style...
         button.backgroundColor = .darkGray
-        button.titleLabel?.text = "Journal"
         button.titleLabel?.font = .monospacedSystemFont(ofSize: 14, weight: .bold)
-        button.titleLabel?.textColor = .white
         return button
     }()
 
@@ -37,17 +35,19 @@ class ThoughtOfDayViewController: UIViewController {
         NSLayoutConstraint.activate([
         thoughtLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         thoughtLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                          constant: CGFloat(40))
+                                          constant: CGFloat(40)),
+        thoughtLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
+        thoughtLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40)
         ])
     }
 
     private func setUpButtonLayout() {
         view.addSubview(journalButton)
+        journalButton.titleLabel?.text = "Journal Now"
         journalButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         journalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        thoughtLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                          constant: CGFloat(40))
+        journalButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 
