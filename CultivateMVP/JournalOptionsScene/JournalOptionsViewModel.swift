@@ -6,6 +6,7 @@ protocol JournalOptionsViewModelType {
 }
 
 struct JournalOptionsViewModel: JournalOptionsViewModelType {
+    // responsiblity of VMs is just to convert domain layer like “Thought” into plain strings of UI. + navigation
 
     var entries: [Entry]
     var moodEntry: MoodEntry

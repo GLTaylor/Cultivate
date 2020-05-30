@@ -5,6 +5,7 @@ protocol ThoughtOfDayViewModelType {
 }
 
 struct ThoughtOfDayViewModel: ThoughtOfDayViewModelType {
+
     var thoughtOfDay: Thought
 
     init(thoughtOfDay: Thought) {

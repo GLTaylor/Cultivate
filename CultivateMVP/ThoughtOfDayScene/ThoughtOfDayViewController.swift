@@ -9,6 +9,10 @@ class ThoughtOfDayViewController: UIViewController {
         self.viewModel = viewModel
         // why was this line down here required? mmm...
         super.init(nibName: nil, bundle: nil)
+
+        journalButton.rx.tap.bind {
+            print("TAP")
+        }
     }
 
     private let thoughtLabel: UILabel = {
@@ -60,4 +64,5 @@ class ThoughtOfDayViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
 }
