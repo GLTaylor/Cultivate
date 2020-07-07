@@ -34,7 +34,7 @@ class ThoughtOfDayViewController: UIViewController {
 
     private func setUpLabelLayout() {
         view.addSubview(thoughtLabel)
-        thoughtLabel.text = viewModel.thoughtOfDay.text
+        thoughtLabel.text = viewModel.thoughtOfDay ?? ""
         thoughtLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         thoughtLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),

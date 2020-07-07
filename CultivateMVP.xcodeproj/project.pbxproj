@@ -22,6 +22,8 @@
 		126FC85D24292B27008600D4 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85C24292B27008600D4 /* Thought.swift */; };
 		126FC860242A94D5008600D4 /* JournalOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85F242A94D5008600D4 /* JournalOptionsViewController.swift */; };
 		126FC862242A94E9008600D4 /* JournalOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC861242A94E9008600D4 /* JournalOptionsViewModel.swift */; };
+		12C43CF024B3288B00164A13 /* ThoughtProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C43CEF24B3288B00164A13 /* ThoughtProvider.swift */; };
+		12C43CF224B329A200164A13 /* JournalOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C43CF124B329A200164A13 /* JournalOptionsProvider.swift */; };
 		34DDED36163B8049BBB9F0E5 /* Pods_CultivateMVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1780C02D9E535EEE71D7CD77 /* Pods_CultivateMVP.framework */; };
 		5A36006BFD80E357508F0CF8 /* Pods_CultivateMVPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965335E66036D71413C3D02B /* Pods_CultivateMVPTests.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +58,8 @@
 		126FC85C24292B27008600D4 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		126FC85F242A94D5008600D4 /* JournalOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalOptionsViewController.swift; sourceTree = "<group>"; };
 		126FC861242A94E9008600D4 /* JournalOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalOptionsViewModel.swift; sourceTree = "<group>"; };
+		12C43CEF24B3288B00164A13 /* ThoughtProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtProvider.swift; sourceTree = "<group>"; };
+		12C43CF124B329A200164A13 /* JournalOptionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalOptionsProvider.swift; sourceTree = "<group>"; };
 		1780C02D9E535EEE71D7CD77 /* Pods_CultivateMVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CultivateMVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		965335E66036D71413C3D02B /* Pods_CultivateMVPTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CultivateMVPTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC92723F1CF0CD2378C37B4D /* Pods-CultivateMVPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CultivateMVPTests.release.xcconfig"; path = "Target Support Files/Pods-CultivateMVPTests/Pods-CultivateMVPTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 			children = (
 				126FC85C24292B27008600D4 /* Thought.swift */,
 				124981C82434AE5C008CE4AF /* Entry.swift */,
+				12C43CEF24B3288B00164A13 /* ThoughtProvider.swift */,
+				12C43CF124B329A200164A13 /* JournalOptionsProvider.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -398,6 +404,8 @@
 				126FC85B24292AFE008600D4 /* ThoughtOfDayViewController.swift in Sources */,
 				126FC85D24292B27008600D4 /* Thought.swift in Sources */,
 				126FC862242A94E9008600D4 /* JournalOptionsViewModel.swift in Sources */,
+				12C43CF224B329A200164A13 /* JournalOptionsProvider.swift in Sources */,
+				12C43CF024B3288B00164A13 /* ThoughtProvider.swift in Sources */,
 				126FC859242929C7008600D4 /* ThoughtOfDayViewModel.swift in Sources */,
 				126FC83A24292921008600D4 /* ViewController.swift in Sources */,
 				126FC83624292921008600D4 /* AppDelegate.swift in Sources */,
