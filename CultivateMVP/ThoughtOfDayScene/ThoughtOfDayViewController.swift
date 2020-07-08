@@ -1,9 +1,12 @@
 import Foundation
 import UIKit
+import RxCocoa
+import RxSwift
 
 class ThoughtOfDayViewController: UIViewController {
 
     private let viewModel: ThoughtOfDayViewModelType
+    private let disposeBag = DisposeBag()
 
     init(viewModel: ThoughtOfDayViewModelType) {
         self.viewModel = viewModel
@@ -34,7 +37,6 @@ class ThoughtOfDayViewController: UIViewController {
 
     private func setUpLabelLayout() {
         view.addSubview(thoughtLabel)
-        thoughtLabel.text = viewModel.thoughtOfDay ?? ""
         thoughtLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         thoughtLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -55,10 +57,21 @@ class ThoughtOfDayViewController: UIViewController {
         ])
     }
 
+    private func configure(with viewState: ThoughtsOfDayViewState) {
+        thoughtLabel.text = viewState.thought
+    }
+
     override func viewDidLoad() {
          super.viewDidLoad()
          setUpLabelLayout()
          setUpButtonLayout()
+
+        viewModel.viewState
+            .drive(onNext: { [weak self] in
+                self?.configure(with: $0)
+            })
+            .disposed(by: disposeBag)
+
     }
 
     required init?(coder: NSCoder) {

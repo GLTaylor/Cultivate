@@ -1,52 +1,37 @@
 import Foundation
+import RxCocoa
+import RxSwift
 
 protocol JournalOptionsViewModelType {
-    // to do - turn into plain UI things
-    var entries: [Entry]? { get }
-    var moodEntry: MoodEntry? { get }
+    var viewState: Driver<JournalOptionsViewState> { get }
 }
 
-class JournalOptionsViewModel: JournalOptionsViewModelType {
+struct JournalOptionsViewModel: JournalOptionsViewModelType {
 
-    var entries: [Entry]?
-    var moodEntry: MoodEntry?
+    var viewState: Driver<JournalOptionsViewState> = .never()
     private var provider: JournalOptionsProvider
 
     init(journalOptionsProvider: JournalOptionsProvider) {
         provider = journalOptionsProvider
-        produceEntries()
-        produceMoodEntries()
-    }
+            // how to handle an array? Probably include a button, and on tap, go to the next in the array...
 
-    func produceEntries() {
-        provider.entries.subscribe(
-            onNext: { data in
-                self.entries = data
-        },
-            onError: { error in
-                print(error)
-        },
-            onCompleted: {
-                print("completed entries")
-        },
-            onDisposed: {
-                print("disposed entries")
-            }).dispose()
-    }
+        viewState = provider.journalQuestions.map {
+            return JournalOptionsViewState(
+                journalQuestion: $0.first?.question,
+                journalAnswer: "Type",
+                moodQuestion: nil,
+                moodAnswer: nil,
+                nextButtonAction: nil
+                )
+        }.asDriver(onErrorDriveWith: .never())
 
-    func produceMoodEntries() {
-        provider.moodEntry.subscribe(
-              onNext: { data in
-                  self.moodEntry = data
-          },
-              onError: { error in
-                  print(error)
-          },
-              onCompleted: {
-                  print("completed mood entries")
-          },
-              onDisposed: {
-                  print("disposed mood entries")
-              }).dispose()
     }
+}
+
+struct JournalOptionsViewState {
+    let journalQuestion: String?
+    let journalAnswer: String?
+    let moodQuestion: String?
+    let moodAnswer: Int?
+    let nextButtonAction: (() -> Void)?
 }

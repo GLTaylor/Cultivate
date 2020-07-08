@@ -3,29 +3,24 @@ import RxCocoa
 import RxSwift
 
 protocol ThoughtOfDayViewModelType {
-    var thoughtOfDay: String? { get }
+     var viewState: Driver<ThoughtsOfDayViewState> { get }
 }
 
 class ThoughtOfDayViewModel: ThoughtOfDayViewModelType {
+    var viewState: Driver<ThoughtsOfDayViewState> = .never()
 
-    var thoughtOfDay: String?
     private var thoughtOfDayProvider: ThoughtProvider
 
     init(thoughtProvider: ThoughtProvider) {
         thoughtOfDayProvider = thoughtProvider
-        produceThoughts()
+        viewState = thoughtOfDayProvider.thought.map {
+            ThoughtsOfDayViewState(thought: $0.text)
+        }.asDriver(onErrorDriveWith: .never())
     }
 
-    func produceThoughts() {
-        thoughtOfDayProvider.thought.subscribe { event in
-            switch event {
-            case .next(let thought):
-                self.thoughtOfDay  = thought.text
-            case .error(let error):
-                print(error)
-            case .completed:
-                print("completed")
-            }
-        }.dispose()
-    }
+}
+
+struct ThoughtsOfDayViewState {
+    // later to be array
+    let thought: String
 }
