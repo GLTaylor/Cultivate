@@ -6,7 +6,7 @@ class JournalOptionsProvider {
     var journalQuestions: Observable<[JournalQuestion]>
 
     init() {
-        journalQuestions = Observable.just([JournalQuestion(question: "How Do You Feel?", answerType: .text)])
+        journalQuestions = Observable.just(JournalQuestions.defaultQuestions)
     }
 }
 
