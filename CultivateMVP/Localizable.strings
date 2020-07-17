@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  CultivateMVP
+
+  Created by Taylor Lindsay on 7/17/20.
+  Copyright © 2020 Taylor Lindsay. All rights reserved.
+*/
+
+/* Thoughts of Day scene */
+"thoughts_of_day_scene.title" = "Thoughts of the Day";
+
+"thoughts_of_day_scene.subtitle" = "What's up";
+
+"thoughts_of_day_scene.button" = "Journal Now";

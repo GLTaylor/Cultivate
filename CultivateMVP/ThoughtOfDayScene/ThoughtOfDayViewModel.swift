@@ -9,18 +9,14 @@ protocol ThoughtOfDayViewModelType {
 class ThoughtOfDayViewModel: ThoughtOfDayViewModelType {
     var viewState: Driver<ThoughtsOfDayViewState> = .never()
 
-    private var thoughtOfDayProvider: ThoughtProvider
-
-    init(thoughtProvider: ThoughtProvider) {
-        thoughtOfDayProvider = thoughtProvider
-        viewState = thoughtOfDayProvider.thought.map {
-            ThoughtsOfDayViewState(thought: $0.text)
-        }.asDriver(onErrorDriveWith: .never())
+    init(sceneCoordinator: SceneCoordinatorType) {
+        viewState = .just(.init(journalNowButtonTapped: {
+            sceneCoordinator.transition(to: .journaling, type: .push)
+        }))
     }
 
 }
 
 struct ThoughtsOfDayViewState {
-    // later to be array
-    let thought: String
+    let journalNowButtonTapped: () -> Void
 }

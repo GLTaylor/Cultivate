@@ -11,25 +11,27 @@ struct MoodEntry {
     let moodRating: Int?
 }
 
-struct JournalQuestion {
+struct JournalQuestionAnswer {
     let question: String
-    let answerType: AnswerType
+    let answer: Answer
 
-    enum AnswerType {
-        case slider
-        case text
+    enum Answer {
+        case slider(Int)
+        case text(String)
     }
 }
 
-struct JournalQuestions {
-    let questions: [JournalQuestion]
+struct JournalQuestionsAnswers {
+    let questionsAnswers: [JournalQuestionAnswer]
 
-    static let defaultQuestions: [JournalQuestion] = [
-        .init(question: "How are you feeling today?", answerType: .slider),
-        .init(question: "What's on your mind right now?", answerType: .text),
-        .init(question: "What are you thankful for today?", answerType: .text),
-        .init(question: "What is a beautiful thing you've seen?", answerType: .text),
-        .init(question: "What do you want your friends to ask you?", answerType: .text),
-        .init(question: "What's something you want to tell your tomorrow self?", answerType: .text)
-    ]
+    static let defaultQuestionsAnswers: JournalQuestionsAnswers = .init(questionsAnswers:
+        [
+            .init(question: "How are you feeling today?", answer: .slider(0)),
+            .init(question: "What's on your mind right now?", answer: .text("")),
+            .init(question: "What are you thankful for today?", answer: .text("")),
+            .init(question: "What is a beautiful thing you've seen?", answer: .text("")),
+            .init(question: "What do you want your friends to ask you?", answer: .text("")),
+            .init(question: "What's something you want to tell your tomorrow self?", answer: .text(""))
+        ]
+    )
 }

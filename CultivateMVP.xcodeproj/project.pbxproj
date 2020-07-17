@@ -20,10 +20,10 @@
 		126FC859242929C7008600D4 /* ThoughtOfDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC858242929C7008600D4 /* ThoughtOfDayViewModel.swift */; };
 		126FC85B24292AFE008600D4 /* ThoughtOfDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85A24292AFE008600D4 /* ThoughtOfDayViewController.swift */; };
 		126FC85D24292B27008600D4 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85C24292B27008600D4 /* Thought.swift */; };
-		126FC860242A94D5008600D4 /* JournalOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85F242A94D5008600D4 /* JournalOptionsViewController.swift */; };
-		126FC862242A94E9008600D4 /* JournalOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC861242A94E9008600D4 /* JournalOptionsViewModel.swift */; };
-		12C43CF024B3288B00164A13 /* ThoughtProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C43CEF24B3288B00164A13 /* ThoughtProvider.swift */; };
-		12C43CF224B329A200164A13 /* JournalOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C43CF124B329A200164A13 /* JournalOptionsProvider.swift */; };
+		126FC860242A94D5008600D4 /* JournalingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85F242A94D5008600D4 /* JournalingViewController.swift */; };
+		126FC862242A94E9008600D4 /* JournalingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC861242A94E9008600D4 /* JournalingViewModel.swift */; };
+		12CBAC5D24C1F08500395C40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12CBAC5C24C1F08500395C40 /* Localizable.strings */; };
+		12CBAC6024C1F63700395C40 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBAC5F24C1F63700395C40 /* Strings.swift */; };
 		34DDED36163B8049BBB9F0E5 /* Pods_CultivateMVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1780C02D9E535EEE71D7CD77 /* Pods_CultivateMVP.framework */; };
 		5A36006BFD80E357508F0CF8 /* Pods_CultivateMVPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965335E66036D71413C3D02B /* Pods_CultivateMVPTests.framework */; };
 /* End PBXBuildFile section */
@@ -56,10 +56,10 @@
 		126FC858242929C7008600D4 /* ThoughtOfDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtOfDayViewModel.swift; sourceTree = "<group>"; };
 		126FC85A24292AFE008600D4 /* ThoughtOfDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtOfDayViewController.swift; sourceTree = "<group>"; };
 		126FC85C24292B27008600D4 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
-		126FC85F242A94D5008600D4 /* JournalOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalOptionsViewController.swift; sourceTree = "<group>"; };
-		126FC861242A94E9008600D4 /* JournalOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalOptionsViewModel.swift; sourceTree = "<group>"; };
-		12C43CEF24B3288B00164A13 /* ThoughtProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtProvider.swift; sourceTree = "<group>"; };
-		12C43CF124B329A200164A13 /* JournalOptionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalOptionsProvider.swift; sourceTree = "<group>"; };
+		126FC85F242A94D5008600D4 /* JournalingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalingViewController.swift; sourceTree = "<group>"; };
+		126FC861242A94E9008600D4 /* JournalingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalingViewModel.swift; sourceTree = "<group>"; };
+		12CBAC5C24C1F08500395C40 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		12CBAC5F24C1F63700395C40 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		1780C02D9E535EEE71D7CD77 /* Pods_CultivateMVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CultivateMVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		965335E66036D71413C3D02B /* Pods_CultivateMVPTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CultivateMVPTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC92723F1CF0CD2378C37B4D /* Pods-CultivateMVPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CultivateMVPTests.release.xcconfig"; path = "Target Support Files/Pods-CultivateMVPTests/Pods-CultivateMVPTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,8 +93,6 @@
 			children = (
 				126FC85C24292B27008600D4 /* Thought.swift */,
 				124981C82434AE5C008CE4AF /* Entry.swift */,
-				12C43CEF24B3288B00164A13 /* ThoughtProvider.swift */,
-				12C43CF124B329A200164A13 /* JournalOptionsProvider.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,7 +123,7 @@
 				124981C72434AD1E008CE4AF /* Models */,
 				126FC863242A95D2008600D4 /* Coordinator */,
 				126FC85724292939008600D4 /* ThoughtOfDayScene */,
-				126FC85E24293C46008600D4 /* JournalOptionsScene */,
+				126FC85E24293C46008600D4 /* JournalingScene */,
 				126FC83524292921008600D4 /* AppDelegate.swift */,
 				126FC83724292921008600D4 /* SceneDelegate.swift */,
 				126FC83924292921008600D4 /* ViewController.swift */,
@@ -133,6 +131,8 @@
 				126FC83E24292922008600D4 /* Assets.xcassets */,
 				126FC84024292922008600D4 /* LaunchScreen.storyboard */,
 				126FC84324292922008600D4 /* Info.plist */,
+				12CBAC5F24C1F63700395C40 /* Strings.swift */,
+				12CBAC5C24C1F08500395C40 /* Localizable.strings */,
 			);
 			path = CultivateMVP;
 			sourceTree = "<group>";
@@ -155,13 +155,13 @@
 			path = ThoughtOfDayScene;
 			sourceTree = "<group>";
 		};
-		126FC85E24293C46008600D4 /* JournalOptionsScene */ = {
+		126FC85E24293C46008600D4 /* JournalingScene */ = {
 			isa = PBXGroup;
 			children = (
-				126FC85F242A94D5008600D4 /* JournalOptionsViewController.swift */,
-				126FC861242A94E9008600D4 /* JournalOptionsViewModel.swift */,
+				126FC85F242A94D5008600D4 /* JournalingViewController.swift */,
+				126FC861242A94E9008600D4 /* JournalingViewModel.swift */,
 			);
-			path = JournalOptionsScene;
+			path = JournalingScene;
 			sourceTree = "<group>";
 		};
 		126FC863242A95D2008600D4 /* Coordinator */ = {
@@ -205,6 +205,7 @@
 				126FC82F24292921008600D4 /* Frameworks */,
 				126FC83024292921008600D4 /* Resources */,
 				5C303D48B3BA03EBC85C42E9 /* [CP] Embed Pods Frameworks */,
+				12CBAC5E24C1F1D100395C40 /* SwiftGen */,
 				1275EA0E2437913600CFCFAC /* SwiftLint */,
 			);
 			buildRules = (
@@ -280,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				126FC84224292922008600D4 /* LaunchScreen.storyboard in Resources */,
+				12CBAC5D24C1F08500395C40 /* Localizable.strings in Resources */,
 				126FC83F24292922008600D4 /* Assets.xcassets in Resources */,
 				126FC83D24292921008600D4 /* Main.storyboard in Resources */,
 			);
@@ -334,6 +336,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint autocorrect\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		12CBAC5E24C1F1D100395C40 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#$PODS_ROOT/SwiftGen/bin/swiftgen xcassets -o $TARGET_NAME/Assets.swift -t swift5 $TARGET_NAME/Assets.xcassets --param forceProvidesNamespaces=true\n$PODS_ROOT/SwiftGen/bin/swiftgen strings -t structured-swift5 $TARGET_NAME/Localizable.strings -o $TARGET_NAME/Strings.swift\n";
 		};
 		2AB3A9CA79136A9E6B4767D5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -399,13 +419,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1269A243242D275400EC594F /* SceneCoordinator.swift in Sources */,
-				126FC860242A94D5008600D4 /* JournalOptionsViewController.swift in Sources */,
+				126FC860242A94D5008600D4 /* JournalingViewController.swift in Sources */,
 				1269A245242D2C8C00EC594F /* Scene.swift in Sources */,
 				126FC85B24292AFE008600D4 /* ThoughtOfDayViewController.swift in Sources */,
 				126FC85D24292B27008600D4 /* Thought.swift in Sources */,
-				126FC862242A94E9008600D4 /* JournalOptionsViewModel.swift in Sources */,
-				12C43CF224B329A200164A13 /* JournalOptionsProvider.swift in Sources */,
-				12C43CF024B3288B00164A13 /* ThoughtProvider.swift in Sources */,
+				126FC862242A94E9008600D4 /* JournalingViewModel.swift in Sources */,
+				12CBAC6024C1F63700395C40 /* Strings.swift in Sources */,
 				126FC859242929C7008600D4 /* ThoughtOfDayViewModel.swift in Sources */,
 				126FC83A24292921008600D4 /* ViewController.swift in Sources */,
 				126FC83624292921008600D4 /* AppDelegate.swift in Sources */,

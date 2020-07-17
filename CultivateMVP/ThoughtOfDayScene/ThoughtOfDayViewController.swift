@@ -20,7 +20,7 @@ class ThoughtOfDayViewController: UIViewController {
 
     private let thoughtLabel: UILabel = {
         let label = UILabel()
-        //later
+        label.text = L10n.ThoughtsOfDayScene.subtitle
         label.textColor = .red
         return label
     }()
@@ -58,7 +58,8 @@ class ThoughtOfDayViewController: UIViewController {
     }
 
     private func configure(with viewState: ThoughtsOfDayViewState) {
-        thoughtLabel.text = viewState.thought
+        // bind button action
+        // get onTap from Babbel
     }
 
     override func viewDidLoad() {

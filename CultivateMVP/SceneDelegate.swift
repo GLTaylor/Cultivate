@@ -11,15 +11,15 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var sceneCoordinator: SceneCoordinatorType!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let singularThoughtProvider = ThoughtProvider()
-        let firstJournalOptionsProvider = JournalOptionsProvider()
 
-        let sceneFactory = SceneFactory(thoughtProvider: singularThoughtProvider, journalOptionsProvider: firstJournalOptionsProvider)
-        let sceneCoordinator = SceneCoordinator(window: window!, factory: sceneFactory)
+        let sceneFactory = SceneFactory()
+        sceneCoordinator = SceneCoordinator(window: window!, factory: sceneFactory)
+        sceneFactory.setup(with: sceneCoordinator)
 
-          sceneCoordinator.transition(to: Scene.thoughtOfDay, type: .root)
+        sceneCoordinator.transition(to: Scene.thoughtOfDay, type: .root)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
