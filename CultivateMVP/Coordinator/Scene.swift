@@ -1,34 +1,32 @@
 import UIKit
 
 enum Scene {
-    case thoughtOfDay(ThoughtOfDayViewModel)
-    case journalOptions(JournalOptionsViewModel)
+    case thoughtOfDay
+    case journaling
     case finished // Todo
 }
 
-struct SceneFactory {
+class SceneFactory {
 
-    private let thoughtOfDayVMThought: Thought
-    private let journalOptionsVMEntries: [Entry]
-    private let journalOptionsVMMoodEntry: MoodEntry
-    // todo: third screen
+    private weak var sceneCoordinator: SceneCoordinatorType!
 
-   // there must be a better way to do this? Should I create a collection of dependencies and a converter of some kind and initialize with that?
-    init(thoughtOfDayViewModelThought: Thought, journalOptionsViewModelEntries: [Entry], journalOptionsViewModelMoodEntry: MoodEntry) {
-        thoughtOfDayVMThought = thoughtOfDayViewModelThought
-        journalOptionsVMEntries = journalOptionsViewModelEntries
-        journalOptionsVMMoodEntry = journalOptionsViewModelMoodEntry
+    func setup(with sceneCoordinator: SceneCoordinatorType) {
+        self.sceneCoordinator = sceneCoordinator
     }
 
+    init() {
+    }
+
+    // the scene factory needs to make a scene without VM's taking data. VMs should handle navigation and convert domain layer like Thought into plain strings of UI. Instead of injecting data into view models, need to inject a dependency that provides data."
     func make(scene: Scene) -> UIViewController {
         let vc: UIViewController
         switch scene {
         case .thoughtOfDay:
-            let vm = ThoughtOfDayViewModel(thoughtOfDay: thoughtOfDayVMThought)
+            let vm = ThoughtOfDayViewModel(sceneCoordinator: sceneCoordinator)
             vc = ThoughtOfDayViewController(viewModel: vm)
-        case .journalOptions:
-            let vm = JournalOptionsViewModel(entries: journalOptionsVMEntries, moodEntry: journalOptionsVMMoodEntry)
-            vc = JournalOptionsViewContoller(viewModel: vm)
+        case .journaling:
+            let vm = JournalingViewModel()
+            vc = JournalingViewContoller(viewModel: vm)
         case .finished:
             // third screen, will set up later
             vc = UIViewController()

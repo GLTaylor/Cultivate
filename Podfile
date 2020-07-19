@@ -4,6 +4,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'CultivateMVP' do
+  pod 'SwiftGen'
   pod 'RxSwift' 
   pod 'RxCocoa'
   pod 'SwiftLint'

@@ -11,14 +11,15 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var sceneCoordinator: SceneCoordinatorType!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        let firstThought = Thought(text: "The journey of a thousand miles begins with a single step")
-        let sceneFactory = SceneFactory(thoughtOfDayViewModelThought: firstThought, journalOptionsViewModelEntries: [], journalOptionsViewModelMoodEntry: MoodEntry(moodQuestion: "What's ur mood", moodRating: 0))
-        let sceneCoordinator = SceneCoordinator(window: window!, factory: sceneFactory)
+        let sceneFactory = SceneFactory()
+        sceneCoordinator = SceneCoordinator(window: window!, factory: sceneFactory)
+        sceneFactory.setup(with: sceneCoordinator)
 
-          sceneCoordinator.transition(to: Scene.thoughtOfDay(ThoughtOfDayViewModel(thoughtOfDay: firstThought)), type: .root)
+        sceneCoordinator.transition(to: Scene.thoughtOfDay, type: .root)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

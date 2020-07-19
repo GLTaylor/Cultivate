@@ -1,19 +1,26 @@
 import Foundation
 import UIKit
+import RxCocoa
+import RxSwift
 
 class ThoughtOfDayViewController: UIViewController {
 
     private let viewModel: ThoughtOfDayViewModelType
+    private let disposeBag = DisposeBag()
 
     init(viewModel: ThoughtOfDayViewModelType) {
         self.viewModel = viewModel
         // why was this line down here required? mmm...
         super.init(nibName: nil, bundle: nil)
+
+        journalButton.rx.tap.bind {
+            print("TAP")
+        }
     }
 
     private let thoughtLabel: UILabel = {
         let label = UILabel()
-        //later
+        label.text = L10n.ThoughtsOfDayScene.subtitle
         label.textColor = .red
         return label
     }()
@@ -30,7 +37,6 @@ class ThoughtOfDayViewController: UIViewController {
 
     private func setUpLabelLayout() {
         view.addSubview(thoughtLabel)
-        thoughtLabel.text = viewModel.thoughtOfDay.text
         thoughtLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         thoughtLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -51,13 +57,26 @@ class ThoughtOfDayViewController: UIViewController {
         ])
     }
 
+    private func configure(with viewState: ThoughtsOfDayViewState) {
+        // bind button action
+        // get onTap from Babbel
+    }
+
     override func viewDidLoad() {
          super.viewDidLoad()
          setUpLabelLayout()
          setUpButtonLayout()
+
+        viewModel.viewState
+            .drive(onNext: { [weak self] in
+                self?.configure(with: $0)
+            })
+            .disposed(by: disposeBag)
+
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
 }

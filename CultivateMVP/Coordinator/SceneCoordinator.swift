@@ -2,9 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol SceneCoordinatorType {
-    init(window: UIWindow, factory: SceneFactory)
-
+protocol SceneCoordinatorType: AnyObject {
     @discardableResult
     func transition(to scene: Scene, type: SceneTransitionType) -> Observable<Void>
 
@@ -12,7 +10,7 @@ protocol SceneCoordinatorType {
     func pop(animated: Bool) -> Observable<Void>
 }
 
-struct SceneCoordinator: SceneCoordinatorType {
+class SceneCoordinator: SceneCoordinatorType {
 
     //I think I can put the first one for this in the app delegate
     private let sceneFactory: SceneFactory
