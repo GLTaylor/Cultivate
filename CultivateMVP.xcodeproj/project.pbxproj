@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		124981C92434AE5C008CE4AF /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124981C82434AE5C008CE4AF /* Entry.swift */; };
+		124981C92434AE5C008CE4AF /* JournalQuestionAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124981C82434AE5C008CE4AF /* JournalQuestionAnswer.swift */; };
 		1269A243242D275400EC594F /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269A242242D275400EC594F /* SceneCoordinator.swift */; };
 		1269A245242D2C8C00EC594F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269A244242D2C8C00EC594F /* Scene.swift */; };
 		126FC83624292921008600D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC83524292921008600D4 /* AppDelegate.swift */; };
@@ -18,7 +18,6 @@
 		126FC84D24292922008600D4 /* CultivateMVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC84C24292922008600D4 /* CultivateMVPTests.swift */; };
 		126FC859242929C7008600D4 /* ThoughtOfDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC858242929C7008600D4 /* ThoughtOfDayViewModel.swift */; };
 		126FC85B24292AFE008600D4 /* ThoughtOfDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85A24292AFE008600D4 /* ThoughtOfDayViewController.swift */; };
-		126FC85D24292B27008600D4 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85C24292B27008600D4 /* Thought.swift */; };
 		126FC860242A94D5008600D4 /* JournalingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85F242A94D5008600D4 /* JournalingViewController.swift */; };
 		126FC862242A94E9008600D4 /* JournalingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC861242A94E9008600D4 /* JournalingViewModel.swift */; };
 		12CBAC5D24C1F08500395C40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12CBAC5C24C1F08500395C40 /* Localizable.strings */; };
@@ -38,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		124981C82434AE5C008CE4AF /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		124981C82434AE5C008CE4AF /* JournalQuestionAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalQuestionAnswer.swift; sourceTree = "<group>"; };
 		1269A242242D275400EC594F /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		1269A244242D2C8C00EC594F /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		126FC83224292921008600D4 /* CultivateMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CultivateMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +52,6 @@
 		126FC84E24292922008600D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		126FC858242929C7008600D4 /* ThoughtOfDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtOfDayViewModel.swift; sourceTree = "<group>"; };
 		126FC85A24292AFE008600D4 /* ThoughtOfDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtOfDayViewController.swift; sourceTree = "<group>"; };
-		126FC85C24292B27008600D4 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		126FC85F242A94D5008600D4 /* JournalingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalingViewController.swift; sourceTree = "<group>"; };
 		126FC861242A94E9008600D4 /* JournalingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalingViewModel.swift; sourceTree = "<group>"; };
 		12CBAC5C24C1F08500395C40 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -89,8 +87,7 @@
 		124981C72434AD1E008CE4AF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				126FC85C24292B27008600D4 /* Thought.swift */,
-				124981C82434AE5C008CE4AF /* Entry.swift */,
+				124981C82434AE5C008CE4AF /* JournalQuestionAnswer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -427,12 +424,11 @@
 				126FC860242A94D5008600D4 /* JournalingViewController.swift in Sources */,
 				1269A245242D2C8C00EC594F /* Scene.swift in Sources */,
 				126FC85B24292AFE008600D4 /* ThoughtOfDayViewController.swift in Sources */,
-				126FC85D24292B27008600D4 /* Thought.swift in Sources */,
 				126FC862242A94E9008600D4 /* JournalingViewModel.swift in Sources */,
 				12CBAC6024C1F63700395C40 /* Strings.swift in Sources */,
 				126FC859242929C7008600D4 /* ThoughtOfDayViewModel.swift in Sources */,
 				126FC83624292921008600D4 /* AppDelegate.swift in Sources */,
-				124981C92434AE5C008CE4AF /* Entry.swift in Sources */,
+				124981C92434AE5C008CE4AF /* JournalQuestionAnswer.swift in Sources */,
 				126FC83824292921008600D4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

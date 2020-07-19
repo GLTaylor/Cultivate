@@ -3,7 +3,6 @@ import UIKit
 enum Scene {
     case thoughtOfDay
     case journaling
-    case finished // Todo
 }
 
 class SceneFactory {
@@ -21,11 +20,8 @@ class SceneFactory {
             let vm = ThoughtOfDayViewModel(sceneCoordinator: sceneCoordinator)
             vc = ThoughtOfDayViewController(viewModel: vm)
         case .journaling:
-            let vm = JournalingViewModel()
+            let vm = JournalingViewModel(sceneCoordinator: sceneCoordinator)
             vc = JournalingViewContoller(viewModel: vm)
-        case .finished:
-            // third screen, will set up later
-            vc = UIViewController()
         }
         return vc
      }

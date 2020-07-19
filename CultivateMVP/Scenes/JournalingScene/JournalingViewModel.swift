@@ -7,11 +7,15 @@ protocol JournalingViewModelType {
 }
 
 final class JournalingViewModel: JournalingViewModelType {
+    private let sceneCoordinator: SceneCoordinatorType
+
     var viewState: Driver<JournalingViewState> = .never()
     private let questionNumber = BehaviorSubject<Int>(value: 0)
-    var questionsAnswers: JournalQuestionsAnswers
+    private var questionsAnswers: JournalQuestionsAnswers
 
-    init(questionsAnswers: JournalQuestionsAnswers = .defaultQuestionsAnswers) {
+    init(sceneCoordinator: SceneCoordinatorType,
+         questionsAnswers: JournalQuestionsAnswers = .defaultQuestionsAnswers) {
+        self.sceneCoordinator = sceneCoordinator
         self.questionsAnswers = questionsAnswers
 
         viewState = questionNumber.flatMap { [weak self] number -> Observable<JournalingViewState> in
@@ -24,24 +28,24 @@ final class JournalingViewModel: JournalingViewModelType {
 
     private func makeViewState(with questionNumber: Int) -> JournalingViewState {
         let answerType: JournalingViewState.AnswerType
-        switch self.questionsAnswers.questionsAnswers[questionNumber].answer {
+        switch questionsAnswers.questionsAnswers[questionNumber].answer {
         case .slider:
-            answerType = .slider({ value in
-                self.questionsAnswers.questionsAnswers[questionNumber].answer = .slider(value)
+            answerType = .slider({ [weak self] value in
+                self?.questionsAnswers.questionsAnswers[questionNumber].answer = .slider(value)
             })
         case .text:
-            answerType = .text({ value in
-                self.questionsAnswers.questionsAnswers[questionNumber].answer = .text(value)
+            answerType = .text({ [weak self] value in
+                self?.questionsAnswers.questionsAnswers[questionNumber].answer = .text(value)
             })
         }
 
         let button: JournalingViewState.Button = questionNumber >= questionsAnswers.questionsAnswers.count - 1
-            ? .finish({
+            ? .finish({ [weak self] in
                 // save questionsAnswers to the DB
-                // coordinator.close the screen
+                self?.sceneCoordinator.pop(animated: true)
             })
-            : .next({
-                self.questionNumber.on(.next(questionNumber + 1))
+            : .next({ [weak self] in
+                self?.questionNumber.on(.next(questionNumber + 1))
             })
 
         return JournalingViewState(
