@@ -1,11 +1,11 @@
 import Foundation
 import UIKit
 
-class JournalOptionsViewContoller: UIViewController {
+class JournalingViewContoller: UIViewController {
 
-    private let viewModel: JournalOptionsViewModelType
+    private let viewModel: JournalingViewModelType
 
-    init(viewModel: JournalOptionsViewModelType) {
+    init(viewModel: JournalingViewModelType) {
           self.viewModel = viewModel
           super.init(nibName: nil, bundle: nil)
 
