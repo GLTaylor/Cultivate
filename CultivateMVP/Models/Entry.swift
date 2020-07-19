@@ -13,7 +13,7 @@ struct MoodEntry {
 
 struct JournalQuestionAnswer {
     let question: String
-    let answer: Answer
+    var answer: Answer
 
     enum Answer {
         case slider(Int)
@@ -22,7 +22,7 @@ struct JournalQuestionAnswer {
 }
 
 struct JournalQuestionsAnswers {
-    let questionsAnswers: [JournalQuestionAnswer]
+    var questionsAnswers: [JournalQuestionAnswer]
 
     static let defaultQuestionsAnswers: JournalQuestionsAnswers = .init(questionsAnswers:
         [

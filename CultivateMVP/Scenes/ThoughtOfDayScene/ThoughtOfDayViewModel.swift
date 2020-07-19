@@ -14,7 +14,6 @@ class ThoughtOfDayViewModel: ThoughtOfDayViewModelType {
             sceneCoordinator.transition(to: .journaling, type: .push)
         }))
     }
-
 }
 
 struct ThoughtsOfDayViewState {

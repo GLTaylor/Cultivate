@@ -12,7 +12,6 @@
 		1269A245242D2C8C00EC594F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269A244242D2C8C00EC594F /* Scene.swift */; };
 		126FC83624292921008600D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC83524292921008600D4 /* AppDelegate.swift */; };
 		126FC83824292921008600D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC83724292921008600D4 /* SceneDelegate.swift */; };
-		126FC83A24292921008600D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC83924292921008600D4 /* ViewController.swift */; };
 		126FC83D24292921008600D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 126FC83B24292921008600D4 /* Main.storyboard */; };
 		126FC83F24292922008600D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 126FC83E24292922008600D4 /* Assets.xcassets */; };
 		126FC84224292922008600D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 126FC84024292922008600D4 /* LaunchScreen.storyboard */; };
@@ -45,7 +44,6 @@
 		126FC83224292921008600D4 /* CultivateMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CultivateMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		126FC83524292921008600D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		126FC83724292921008600D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		126FC83924292921008600D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		126FC83C24292921008600D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		126FC83E24292922008600D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		126FC84124292922008600D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -120,13 +118,11 @@
 		126FC83424292921008600D4 /* CultivateMVP */ = {
 			isa = PBXGroup;
 			children = (
+				174CF39224C4330F00F0D323 /* Scenes */,
 				124981C72434AD1E008CE4AF /* Models */,
 				126FC863242A95D2008600D4 /* Coordinator */,
-				126FC85724292939008600D4 /* ThoughtOfDayScene */,
-				126FC85E24293C46008600D4 /* JournalingScene */,
 				126FC83524292921008600D4 /* AppDelegate.swift */,
 				126FC83724292921008600D4 /* SceneDelegate.swift */,
-				126FC83924292921008600D4 /* ViewController.swift */,
 				126FC83B24292921008600D4 /* Main.storyboard */,
 				126FC83E24292922008600D4 /* Assets.xcassets */,
 				126FC84024292922008600D4 /* LaunchScreen.storyboard */,
@@ -171,6 +167,15 @@
 				1269A244242D2C8C00EC594F /* Scene.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		174CF39224C4330F00F0D323 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				126FC85E24293C46008600D4 /* JournalingScene */,
+				126FC85724292939008600D4 /* ThoughtOfDayScene */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		7FBE25200644547732558EE6 /* Frameworks */ = {
@@ -353,7 +358,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#$PODS_ROOT/SwiftGen/bin/swiftgen xcassets -o $TARGET_NAME/Assets.swift -t swift5 $TARGET_NAME/Assets.xcassets --param forceProvidesNamespaces=true\n$PODS_ROOT/SwiftGen/bin/swiftgen strings -t structured-swift5 $TARGET_NAME/Localizable.strings -o $TARGET_NAME/Strings.swift\n";
+			shellScript = "#$PODS_ROOT/SwiftGen/bin/swiftgen run xcassets -o $TARGET_NAME/Assets.swift -t swift5 $TARGET_NAME/Assets.xcassets --param forceProvidesNamespaces=true\n$PODS_ROOT/SwiftGen/bin/swiftgen run strings -t structured-swift5 $TARGET_NAME/Localizable.strings -o $TARGET_NAME/Strings.swift\n";
 		};
 		2AB3A9CA79136A9E6B4767D5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -426,7 +431,6 @@
 				126FC862242A94E9008600D4 /* JournalingViewModel.swift in Sources */,
 				12CBAC6024C1F63700395C40 /* Strings.swift in Sources */,
 				126FC859242929C7008600D4 /* ThoughtOfDayViewModel.swift in Sources */,
-				126FC83A24292921008600D4 /* ViewController.swift in Sources */,
 				126FC83624292921008600D4 /* AppDelegate.swift in Sources */,
 				124981C92434AE5C008CE4AF /* Entry.swift in Sources */,
 				126FC83824292921008600D4 /* SceneDelegate.swift in Sources */,
