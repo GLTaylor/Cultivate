@@ -1,6 +1,5 @@
 disabled_rules:
   - identifier_name
   - nesting
-  - line_length
 excluded:
   - Pods

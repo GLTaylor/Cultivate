@@ -22,11 +22,11 @@ class SceneCoordinator: SceneCoordinatorType {
     }
 
     static func actualViewController(for viewController: UIViewController) -> UIViewController {
-      if let navigationController = viewController as? UINavigationController {
-        return navigationController.viewControllers.first!
-      } else {
-        return viewController
-      }
+        if let navigationController = viewController as? UINavigationController {
+            return navigationController.viewControllers.first!
+        } else {
+            return viewController
+        }
     }
 
     // finish
@@ -41,11 +41,13 @@ class SceneCoordinator: SceneCoordinatorType {
         case .push:
             //from the book:
             _ = navigationController.rx.delegate
-                         .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
-                         .map { _ in }
-                         .bind(to: subject)
-                     navigationController.pushViewController(viewController, animated: true)
-                     return subject
+                .sentMessage(
+                    #selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:))
+            )
+                .map { _ in }
+                .bind(to: subject)
+            navigationController.pushViewController(viewController, animated: true)
+            return subject
         case .modal:
             // not sure if this one is right
 
@@ -65,11 +67,11 @@ class SceneCoordinator: SceneCoordinatorType {
         let subject = PublishSubject<Void>()
 
         _ = navigationController.rx.delegate
-          .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
-          .map { _ in }
-          .bind(to: subject)
+            .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
+            .map { _ in }
+            .bind(to: subject)
         guard navigationController.popViewController(animated: animated) != nil else {
-          fatalError("can't go back")
+            fatalError("can't go back")
         }
         return subject
     }
@@ -77,9 +79,9 @@ class SceneCoordinator: SceneCoordinatorType {
 }
 
 enum SceneTransitionType {
-  //can be extended
+    //can be extended
 
-  case root       // make view controller the root view controller
-  case push       // push view controller to navigation stack
-  case modal      // present view controller modally
+    case root       // make view controller the root view controller
+    case push       // push view controller to navigation stack
+    case modal      // present view controller modally
 }

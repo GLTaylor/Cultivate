@@ -14,10 +14,6 @@ class SceneFactory {
         self.sceneCoordinator = sceneCoordinator
     }
 
-    init() {
-    }
-
-    // the scene factory needs to make a scene without VM's taking data. VMs should handle navigation and convert domain layer like Thought into plain strings of UI. Instead of injecting data into view models, need to inject a dependency that provides data."
     func make(scene: Scene) -> UIViewController {
         let vc: UIViewController
         switch scene {
