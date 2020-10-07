@@ -1,17 +1,30 @@
 import Foundation
 
-struct JournalQuestionAnswer {
+public struct JournalQuestionAnswer: Equatable {
     let question: String
     var answer: Answer
 
-    enum Answer {
+    enum Answer: Equatable {
         case slider(Int)
         case text(String)
     }
+
+    var isTextAnswer: Bool {
+        switch answer {
+        case .slider:
+            return false
+        case .text:
+            return true
+        }
+    }
 }
 
-struct JournalQuestionsAnswers {
+public struct JournalQuestionsAnswers {
     var questionsAnswers: [JournalQuestionAnswer]
+
+     init(questionsAnswers: [JournalQuestionAnswer]) {
+        self.questionsAnswers = questionsAnswers
+    }
 
     static let defaultQuestionsAnswers = JournalQuestionsAnswers(questionsAnswers: [
         .init(question: "How are you feeling today?", answer: .slider(0)),
