@@ -8,10 +8,11 @@ struct JournalingView: View {
    var body: some View {
        VStack(alignment: .leading) {
         Text(store.state.mainQuestionAnswers.questionsAnswers[store.state.entryRoundNumber].question)
+            .font(Font.custom(FontNameManager.Montserrat.regular, size: 25))
         if store.state.mainQuestionAnswers.questionsAnswers[store.state.entryRoundNumber].isTextAnswer {
 
             TextField("Type here",
-                  text: $entryText,
+                      text: $entryText,
                   onEditingChanged: {
                     print("Editing changed? \($0)")
                 }
@@ -21,13 +22,23 @@ struct JournalingView: View {
                 self.entryText = ""
                 print(self.store.state.answeredQuestionAnswers)
 
-            }, label: { Text("Save Answer") })
+            }, label: {
+                Text("Save")
+                    .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
+
+            })
 
         } else {
             Slider(value: $entryNumber, in: 0...10, step: 1.0)
+                .accentColor(.green)
             Button(action: {
                 self.store.send(.answer(enteredAnswer: .slider(Int(self.entryNumber))))
-            }, label: { Text("Save Answer") })
+            }, label: {
+                Text("Save")
+                    .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
+                    .accentColor(.green)
+
+            })
         }
        }.padding()
    }

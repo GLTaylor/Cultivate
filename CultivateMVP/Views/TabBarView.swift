@@ -8,12 +8,12 @@ struct TabBarView: View {
             ThoughtOfDayView(store: store)
                 .tabItem {
 //                    Image.journal
-                    Text("Game")
+                    Text("Start")
             }
             EntryHistoryView(store: store)
             .tabItem {
 //                Image.log
-                Text("Score")
+                Text("Log")
             }
         }
     }
