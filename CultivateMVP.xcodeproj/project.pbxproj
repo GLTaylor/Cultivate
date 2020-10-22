@@ -21,8 +21,8 @@
 		126FC83F24292922008600D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 126FC83E24292922008600D4 /* Assets.xcassets */; };
 		126FC84224292922008600D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 126FC84024292922008600D4 /* LaunchScreen.storyboard */; };
 		126FC84D24292922008600D4 /* CultivateMVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC84C24292922008600D4 /* CultivateMVPTests.swift */; };
-		126FC85B24292AFE008600D4 /* ThoughtOfDayViewSWIFTUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85A24292AFE008600D4 /* ThoughtOfDayViewSWIFTUI.swift */; };
-		126FC860242A94D5008600D4 /* JournalingViewSWIFTUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85F242A94D5008600D4 /* JournalingViewSWIFTUI.swift */; };
+		126FC85B24292AFE008600D4 /* ThoughtOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85A24292AFE008600D4 /* ThoughtOfDayView.swift */; };
+		126FC860242A94D5008600D4 /* JournalingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85F242A94D5008600D4 /* JournalingView.swift */; };
 		12CBAC5D24C1F08500395C40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12CBAC5C24C1F08500395C40 /* Localizable.strings */; };
 		12CBAC6024C1F63700395C40 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBAC5F24C1F63700395C40 /* Strings.swift */; };
 		12E04418253E0CA7002947B3 /* FontNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E04417253E0CA7002947B3 /* FontNameManager.swift */; };
@@ -68,8 +68,8 @@
 		126FC84824292922008600D4 /* CultivateMVPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CultivateMVPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		126FC84C24292922008600D4 /* CultivateMVPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivateMVPTests.swift; sourceTree = "<group>"; };
 		126FC84E24292922008600D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		126FC85A24292AFE008600D4 /* ThoughtOfDayViewSWIFTUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtOfDayViewSWIFTUI.swift; sourceTree = "<group>"; };
-		126FC85F242A94D5008600D4 /* JournalingViewSWIFTUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalingViewSWIFTUI.swift; sourceTree = "<group>"; };
+		126FC85A24292AFE008600D4 /* ThoughtOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtOfDayView.swift; sourceTree = "<group>"; };
+		126FC85F242A94D5008600D4 /* JournalingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalingView.swift; sourceTree = "<group>"; };
 		12CBAC5C24C1F08500395C40 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		12CBAC5F24C1F63700395C40 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		12E04417253E0CA7002947B3 /* FontNameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNameManager.swift; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 		174CF39224C4330F00F0D323 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				126FC85A24292AFE008600D4 /* ThoughtOfDayViewSWIFTUI.swift */,
-				126FC85F242A94D5008600D4 /* JournalingViewSWIFTUI.swift */,
+				126FC85A24292AFE008600D4 /* ThoughtOfDayView.swift */,
+				126FC85F242A94D5008600D4 /* JournalingView.swift */,
 				123F53A2252E15C500EE4927 /* EntryHistoryView.swift */,
 				123F53A0252E150A00EE4927 /* TabBarView.swift */,
 			);
@@ -470,9 +470,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				126FC860242A94D5008600D4 /* JournalingViewSWIFTUI.swift in Sources */,
+				126FC860242A94D5008600D4 /* JournalingView.swift in Sources */,
 				12F7E1962523BACC001AD675 /* StateStore.swift in Sources */,
-				126FC85B24292AFE008600D4 /* ThoughtOfDayViewSWIFTUI.swift in Sources */,
+				126FC85B24292AFE008600D4 /* ThoughtOfDayView.swift in Sources */,
 				12E04418253E0CA7002947B3 /* FontNameManager.swift in Sources */,
 				12CBAC6024C1F63700395C40 /* Strings.swift in Sources */,
 				12094487251C91080039389C /* AppState.swift in Sources */,

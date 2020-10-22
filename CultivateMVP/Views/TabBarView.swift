@@ -7,22 +7,26 @@ struct TabBarView: View {
         TabView {
             ThoughtOfDayView(store: store)
                 .tabItem {
-//                    Image.journal
+                    Image.home
+                    .resizable()
+                    .scaledToFit()
                     Text("Start")
             }
             EntryHistoryView(store: store)
             .tabItem {
-//                Image.log
+                Image.log
+                .resizable()
+                .scaledToFit()
                 Text("Log")
             }
         }
     }
 }
 
-//private extension Image {
-//    static let journal = Image(systemName: "gamecontroller.fill")
-//    static let log = Image(systemName: "list.dash")
-//}
+private extension Image {
+    static let home = Image("home")
+    static let log = Image("log")
+}
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {

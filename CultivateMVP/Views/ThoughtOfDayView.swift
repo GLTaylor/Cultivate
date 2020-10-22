@@ -9,7 +9,7 @@ struct ThoughtOfDayView: View {
         Button(action: { self.store.send(.startJournaling)},
                label: { Text("Let's begin to cultivate something great")})
             .font(titleFont)
-            .accentColor(.black)
+            .foregroundColor(Color("ForrestGreen"))
             .sheet(isPresented: Binding.constant(store.state.journalingHasStarted),
                    onDismiss: { self.store.send(.stopJournaling) },
                    content: { JournalingView(store: self.store) })
