@@ -15,8 +15,9 @@ struct JournalingView: View {
                       text: $entryText,
                   onEditingChanged: {
                     print("Editing changed? \($0)")
+
                 }
-            )
+            ).font(Font.custom(FontNameManager.Montserrat.light, size: 20))
             Button(action: {
                 self.store.send(.answer(enteredAnswer: .text(self.entryText)))
                 self.entryText = ""
@@ -25,18 +26,20 @@ struct JournalingView: View {
             }, label: {
                 Text("Save")
                     .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
+                    .accentColor(Color("ForrestGreen"))
 
             })
 
         } else {
             Slider(value: $entryNumber, in: 0...10, step: 1.0)
-                .accentColor(.green)
+                .accentColor(Color("ForrestGreen"))
             Button(action: {
                 self.store.send(.answer(enteredAnswer: .slider(Int(self.entryNumber))))
             }, label: {
-                Text("Save")
+                let intVersionOfNumber = Int(entryNumber)
+                Text("Save \(intVersionOfNumber)")
                     .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
-                    .accentColor(.green)
+                    .accentColor(Color("ForrestGreen"))
 
             })
         }
