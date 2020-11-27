@@ -11,23 +11,23 @@ struct JournalingView: View {
             .font(Font.custom(FontNameManager.Montserrat.regular, size: 25))
         if store.state.mainQuestionAnswers.questionsAnswers[store.state.entryRoundNumber].isTextAnswer {
 
-            TextField("Type here",
-                      text: $entryText,
-                  onEditingChanged: {
-                    print("Editing changed? \($0)")
-
-                }
-            ).font(Font.custom(FontNameManager.Montserrat.light, size: 20))
+            TextField("Type here", text: $entryText)
+                .font(Font.custom(FontNameManager.Montserrat.light, size: 20))
             Button(action: {
                 self.store.send(.answer(enteredAnswer: .text(self.entryText)))
                 self.entryText = ""
                 print(self.store.state.answeredQuestionAnswers)
 
             }, label: {
+                if self.entryText == "" {
+                    Text("Skip")
+                    .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
+                    .accentColor(Color(ColorNameManager.Green.forrest))
+                } else {
                 Text("Save")
                     .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
-                    .accentColor(Color("ForrestGreen"))
-
+                    .accentColor(Color(ColorNameManager.Green.forrest))
+                }
             })
 
         } else {

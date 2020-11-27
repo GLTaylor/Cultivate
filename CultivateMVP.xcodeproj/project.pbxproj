@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12094487251C91080039389C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12094486251C91080039389C /* AppState.swift */; };
+		122F152E25682572005E483E /* ColorNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122F152D25682572005E483E /* ColorNameManager.swift */; };
 		123F53A1252E150A00EE4927 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F53A0252E150A00EE4927 /* TabBarView.swift */; };
 		123F53A3252E15C500EE4927 /* EntryHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F53A2252E15C500EE4927 /* EntryHistoryView.swift */; };
 		123F53AB25391BAF00EE4927 /* PTSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 123F53AA25391B5D00EE4927 /* PTSerif-Regular.ttf */; };
@@ -23,6 +24,7 @@
 		126FC84D24292922008600D4 /* CultivateMVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC84C24292922008600D4 /* CultivateMVPTests.swift */; };
 		126FC85B24292AFE008600D4 /* ThoughtOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85A24292AFE008600D4 /* ThoughtOfDayView.swift */; };
 		126FC860242A94D5008600D4 /* JournalingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC85F242A94D5008600D4 /* JournalingView.swift */; };
+		1281DCA725710C8300D5C710 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281DCA625710C8300D5C710 /* AppEnvironment.swift */; };
 		12CBAC5D24C1F08500395C40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12CBAC5C24C1F08500395C40 /* Localizable.strings */; };
 		12CBAC6024C1F63700395C40 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBAC5F24C1F63700395C40 /* Strings.swift */; };
 		12E04418253E0CA7002947B3 /* FontNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E04417253E0CA7002947B3 /* FontNameManager.swift */; };
@@ -51,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		12094486251C91080039389C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = Models/AppState.swift; sourceTree = "<group>"; };
+		122F152D25682572005E483E /* ColorNameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorNameManager.swift; sourceTree = "<group>"; };
 		123F53A0252E150A00EE4927 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		123F53A2252E15C500EE4927 /* EntryHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryHistoryView.swift; sourceTree = "<group>"; };
 		123F53A725391B3B00EE4927 /* PTSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSerif-Bold.ttf"; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 		126FC84E24292922008600D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		126FC85A24292AFE008600D4 /* ThoughtOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtOfDayView.swift; sourceTree = "<group>"; };
 		126FC85F242A94D5008600D4 /* JournalingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalingView.swift; sourceTree = "<group>"; };
+		1281DCA625710C8300D5C710 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		12CBAC5C24C1F08500395C40 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		12CBAC5F24C1F63700395C40 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		12E04417253E0CA7002947B3 /* FontNameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNameManager.swift; sourceTree = "<group>"; };
@@ -154,10 +158,11 @@
 			children = (
 				12094486251C91080039389C /* AppState.swift */,
 				12F7E1952523BACC001AD675 /* StateStore.swift */,
+				126FC83524292921008600D4 /* AppDelegate.swift */,
+				1281DCA625710C8300D5C710 /* AppEnvironment.swift */,
+				126FC83724292921008600D4 /* SceneDelegate.swift */,
 				174CF39224C4330F00F0D323 /* Views */,
 				124981C72434AD1E008CE4AF /* Models */,
-				126FC83524292921008600D4 /* AppDelegate.swift */,
-				126FC83724292921008600D4 /* SceneDelegate.swift */,
 				126FC83B24292921008600D4 /* Main.storyboard */,
 				126FC83E24292922008600D4 /* Assets.xcassets */,
 				126FC84024292922008600D4 /* LaunchScreen.storyboard */,
@@ -165,6 +170,7 @@
 				12CBAC5F24C1F63700395C40 /* Strings.swift */,
 				12CBAC5C24C1F08500395C40 /* Localizable.strings */,
 				12E04417253E0CA7002947B3 /* FontNameManager.swift */,
+				122F152D25682572005E483E /* ColorNameManager.swift */,
 			);
 			path = CultivateMVP;
 			sourceTree = "<group>";
@@ -477,6 +483,8 @@
 				12CBAC6024C1F63700395C40 /* Strings.swift in Sources */,
 				12094487251C91080039389C /* AppState.swift in Sources */,
 				126FC83624292921008600D4 /* AppDelegate.swift in Sources */,
+				1281DCA725710C8300D5C710 /* AppEnvironment.swift in Sources */,
+				122F152E25682572005E483E /* ColorNameManager.swift in Sources */,
 				124981C92434AE5C008CE4AF /* JournalQuestionAnswer.swift in Sources */,
 				123F53A3252E15C500EE4927 /* EntryHistoryView.swift in Sources */,
 				12F7E1982523C15B001AD675 /* EntryHistory.swift in Sources */,

@@ -15,7 +15,7 @@ enum AppAction {
     case stopJournaling
 }
 
-func reducer(state: inout AppState, action: AppAction) {
+func reducer(state: inout AppState, action: AppAction) -> Effect<AppAction>? {
     switch action {
     case .answer(let answer):
         let question = state.mainQuestionAnswers.questionsAnswers[state.entryRoundNumber].question
@@ -27,9 +27,10 @@ func reducer(state: inout AppState, action: AppAction) {
         }
         if state.entryRoundNumber >= state.mainQuestionAnswers.questionsAnswers.count - 1 {
             state.journalingHasStarted = false
-            state.entryHistory.activities.append(.init(id: UUID(),
+            state.entryHistory.activities.insert(.init(id: UUID(),
                                                        timestamp: Date(),
-                                                       resultSet: state.answeredQuestionAnswers))
+                                                       resultSet: state.answeredQuestionAnswers),
+                                                 at: 0)
         } else {
             state.entryRoundNumber += 1
         }
@@ -37,10 +38,13 @@ func reducer(state: inout AppState, action: AppAction) {
         state.entryRoundNumber = 0
         state.answeredQuestionAnswers = []
         state.journalingHasStarted = true
+        // eventually could return effect here, load questions from somewhere
     case .stopJournaling:
         state.journalingHasStarted = false
-        // remove entries, later
+        // remove entries, tbd later
     }
+
+    return nil
 }
 
 typealias AppStore = Store<AppState, AppAction>
