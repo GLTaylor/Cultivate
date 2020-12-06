@@ -11,12 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let contentView = TabBarView(store: AppStore(initialState: AppState(), reducer: reducer))
 
-        for fontFamily in UIFont.familyNames {
-            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
-                print("\(fontName)")
-            }
-        }
-
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

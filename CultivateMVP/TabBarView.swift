@@ -5,7 +5,7 @@ struct TabBarView: View {
 
     var body: some View {
         TabView {
-            ThoughtOfDayView(store: store)
+            JournalStartView(store: store)
                 .tabItem {
                     Image.home
                     .resizable()
