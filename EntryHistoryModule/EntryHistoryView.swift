@@ -1,8 +1,13 @@
 import SwiftUI
+import BedrockModels
 import ComposableArchitecture
 
-struct EntryHistoryView: View {
+public struct EntryHistoryView: View {
    let store: ModuleStore
+
+    public init(store: ModuleStore) {
+        self.store = store
+    }
 
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -11,7 +16,7 @@ struct EntryHistoryView: View {
         return formatter
     }()
 
-    var body: some View {
+    public var body: some View {
         WithViewStore(store) { viewStore in
         NavigationView {
                 List {
@@ -34,13 +39,20 @@ struct EntryHistoryView: View {
     }
 }
 
-
 struct EntryHistoryView_Previews: PreviewProvider {
     static var previews: some View {
         var state = ModuleState()
-        state.entryHistory.activities
-        
+        state.entryHistory.activities = [
+            .init(id: UUID(),
+                  timestamp: Date(timeIntervalSinceNow: 10),
+                  resultSet: [
+                    .init(question: "How are you?", answer: .text("Great"))
+                    ]
+                  )
+            ]
+
+        return EntryHistoryView(store: ModuleStore(initialState: state, reducer: reducer, environment: ()))
+
     }
 
 }
-

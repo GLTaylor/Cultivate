@@ -52,6 +52,6 @@ struct JournalingView: View {
 
 struct  JournalingView_Previews: PreviewProvider {
     static var previews: some View {
-        JournalingView(store: ModuleStore(initialState: ModuleState(), reducer: reducer, environment: .live))
+        JournalingView(store: ModuleStore(initialState: ModuleState(), reducer: reducer, environment: ()))
     }
 }

@@ -2,15 +2,19 @@ import SwiftUI
 import ComposableArchitecture
 import DesignKit
 
-struct JournalStartView: View {
-   var store: ModuleStore
+public struct JournalStartView: View {
+    let store: ModuleStore
+
+    public init(store: ModuleStore) {
+        self.store = store
+    }
 
     let titleFont = Font.custom(FontNameManager.PTSerif.bold, size: 40)
     let buttonFont = Font.custom(FontNameManager.Montserrat.semiBold, size: 20)
     let pastEntryTitle = Font.custom(FontNameManager.Montserrat.italic, size: 20)
     let pastEntryText = Font.custom(FontNameManager.Montserrat.medium, size: 15)
 
-    var body: some View {
+    public var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
                 Text("Let's begin to cultivate")
@@ -32,13 +36,13 @@ struct JournalStartView: View {
                 latestEntry
                     .padding(.top, 40)
             }
-    //       if latestEntry was here, it becomes a second tab (?!)
+            //       if latestEntry was here, it becomes a second tab (?!)
         }
     }
 
-// Bug for later: When skipping a question, text is actually "", not nil.
-// Implementing a hacky workaround for now.
-// Need to rewrite models and logic for answer to potentially be nil.
+    // Bug for later: When skipping a question, text is actually "", not nil.
+    // Implementing a hacky workaround for now.
+    // In the future I may rewrite models and logic for answer to potentially be nil.
 
     private var latestEntry: some View {
         WithViewStore(store) { viewStore -> AnyView in
@@ -46,42 +50,42 @@ struct JournalStartView: View {
                 return AnyView(EmptyView())
             }
 
-        var entryTextView: AnyView {
-            switch entry.last(where: { ($0.answer != .text("")) })?.answer {
-            case let .text(theString):
-                if theString.count > 1 {
-                    return AnyView(
-                        Group {
-                            VStack(spacing: 10) {
-                                Text("Your last thought:")
-                                    .font(pastEntryTitle)
-                                Text("\"\(theString)\"")
-                                    .font(pastEntryText)
-                            }
-                        }.padding()
-                    )
-                } else {
+            var entryTextView: AnyView {
+                switch entry.last(where: { ($0.answer != .text("")) })?.answer {
+                case let .text(theString):
+                    if theString.count > 1 {
+                        return AnyView(
+                            Group {
+                                VStack(spacing: 10) {
+                                    Text("Your last thought:")
+                                        .font(pastEntryTitle)
+                                    Text("\"\(theString)\"")
+                                        .font(pastEntryText)
+                                }
+                            }.padding()
+                        )
+                    } else {
+                        return AnyView(EmptyView())
+                    }
+                case .slider, .none:
                     return AnyView(EmptyView())
                 }
-            case .slider, .none:
-                return AnyView(EmptyView())
             }
-        }
-        return entryTextView
+            return entryTextView
         }
     }
 }
 
-    struct JournalStartView_Previews: PreviewProvider {
-        static var previews: some View {
-            var state = ModuleState()
-            state.entryHistory.activities = [
-                .init(id: UUID(),
-                      timestamp: Date(timeIntervalSinceNow: 10),
-                      resultSet: .init(arrayLiteral: .init(
-                        question: "How you feelin",
-                        answer: .text("Be good to mom, she's going thru a lot just like any human and you may not be able to totally comprehend exactly what it is"))))
-            ]
-            return JournalStartView(store: ModuleStore(initialState: state, reducer: reducer, environment: .live))
-        }
+struct JournalStartView_Previews: PreviewProvider {
+    static var previews: some View {
+        var state = ModuleState()
+        state.entryHistory.activities = [
+            .init(id: UUID(),
+                  timestamp: Date(timeIntervalSinceNow: 10),
+                  resultSet: .init(arrayLiteral: .init(
+                                    question: "How you feelin",
+                                    answer: .text("Be good to mom, she's going thru a lot"))))
+        ]
+        return JournalStartView(store: ModuleStore(initialState: state, reducer: reducer, environment: ()))
     }
+}

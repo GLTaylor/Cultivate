@@ -6,10 +6,14 @@ public typealias ModuleStore = Store<ModuleState, ModuleAction>
 public typealias ModuleEffect = Effect<ModuleAction, Never>
 
 public struct ModuleState: Equatable {
-    var entryHistory = EntryHistory.empty
+    public var entryHistory: EntryHistory
+
+    public init(entryHistory: EntryHistory = .empty) {
+        self.entryHistory = entryHistory
+    }
 }
 
-public enum ModuleAction {
+public enum ModuleAction: Equatable {
     case removeEntries(indexSet: IndexSet)
 }
 

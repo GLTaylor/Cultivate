@@ -9,7 +9,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
 
-        let contentView = TabBarView(store: AppStore(initialState: AppState(), reducer: reducer))
+        let contentView = TabBarView(store: AppStore(initialState: AppState(), reducer: reducer, environment: ()))
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

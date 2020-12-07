@@ -1,34 +1,29 @@
-//
-//  EntryHistoryModuleTests.swift
-//  EntryHistoryModuleTests
-//
-//  Created by Taylor Lindsay on 12/4/20.
-//  Copyright © 2020 Taylor Lindsay. All rights reserved.
-//
-
 import XCTest
 @testable import EntryHistoryModule
+import ComposableArchitecture
+import BedrockModels
 
 class EntryHistoryModuleTests: XCTestCase {
+    func testRemoveActivities() {
+        let testStore = TestStore(
+            initialState: ModuleState(entryHistory: EntryHistory.init(activities: [
+                .init(id: .fakeUUID, timestamp: Date(timeIntervalSince1970: 0), resultSet: [])
+            ])),
+            reducer: reducer,
+            environment: ()
+        )
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        testStore.assert([
+            .send(.removeEntries(indexSet: [0])) {
+                $0.entryHistory = .empty
+            }
+        ])
     }
 
 }
+
+#if DEBUG
+extension UUID {
+    static let fakeUUID = UUID()
+}
+#endif

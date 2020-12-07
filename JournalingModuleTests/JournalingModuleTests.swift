@@ -28,11 +28,14 @@ class JournalingModuleTests: XCTestCase {
                 $0.answeredQuestionAnswers = []
             },
             .send(.answer(enteredAnswer: .slider(7))) {
-                $0.answeredQuestionAnswers = [JournalQuestionAnswer.init(question: "How are you feeling today?", answer: .slider(7))]
+                $0.answeredQuestionAnswers = [
+                    JournalQuestionAnswer.init(
+                        question: "How are you feeling today?",
+                        answer: .slider(7))
+                ]
                 $0.entryRoundNumber = 1
             }
         )
     }
 
 }
-

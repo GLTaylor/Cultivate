@@ -2,17 +2,28 @@ import Foundation
 import BedrockModels
 import ComposableArchitecture
 
-
 public typealias ModuleStore = Store<ModuleState, ModuleAction>
 public typealias ModuleEffect = Effect<ModuleAction, Never>
 
 public struct ModuleState: Equatable {
-    var mainQuestionAnswers = JournalQuestionsAnswers.defaultQuestionsAnswers
-    var answeredQuestionAnswers: [JournalQuestionAnswer] = []
-    var entryRoundNumber = 0
-    var journalingHasStarted = false
-    var entryHistory = EntryHistory.empty
+    public var mainQuestionAnswers: JournalQuestionsAnswers
+    public var answeredQuestionAnswers: [JournalQuestionAnswer]
+    public var entryRoundNumber: Int
+    public var journalingHasStarted: Bool
+    public var entryHistory: EntryHistory
 
+    public init(mainQuestionAnswers: JournalQuestionsAnswers = .defaultQuestionsAnswers,
+                answeredQuestionAnswers: [JournalQuestionAnswer] = [],
+                entryRoundNumber: Int = 0,
+                journalingHasStarted: Bool = false,
+                entryHistory: EntryHistory = .empty
+    ) {
+        self.mainQuestionAnswers = mainQuestionAnswers
+        self.answeredQuestionAnswers = answeredQuestionAnswers
+        self.entryRoundNumber = entryRoundNumber
+        self.journalingHasStarted = journalingHasStarted
+        self.entryHistory = entryHistory
+    }
 }
 
 public enum ModuleAction: Equatable {
@@ -21,8 +32,8 @@ public enum ModuleAction: Equatable {
     case stopJournaling
 }
 
-public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { state, action, environment  in
-    // nothing with environment yet, but wanted to satisfy reducer
+public let reducer = Reducer<ModuleState, ModuleAction, Void> { state, action, _  in
+    // nothing with environment yet, will replace Void later w ModuleEnvironment
     switch action {
     case .answer(let answer):
         let question = state.mainQuestionAnswers.questionsAnswers[state.entryRoundNumber].question

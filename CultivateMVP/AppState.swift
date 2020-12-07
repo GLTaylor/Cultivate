@@ -1,4 +1,9 @@
-import Foundation
+import BedrockModels
+import JournalingModule
+import EntryHistoryModule
+import ComposableArchitecture
+
+typealias AppStore = Store<AppState, AppAction>
 
 struct AppState {
     var mainQuestionAnswers = JournalQuestionsAnswers.defaultQuestionsAnswers
@@ -7,40 +12,48 @@ struct AppState {
     var journalingHasStarted = false
     var entryHistory = EntryHistory.empty
 
+    var journalModuleState: JournalingModule.ModuleState {
+        get {
+            JournalingModule.ModuleState.init(
+                mainQuestionAnswers: mainQuestionAnswers,
+                answeredQuestionAnswers: answeredQuestionAnswers,
+                entryRoundNumber: entryRoundNumber,
+                journalingHasStarted: journalingHasStarted,
+                entryHistory: entryHistory)
+        }
+
+        set {
+            mainQuestionAnswers = newValue.mainQuestionAnswers
+            answeredQuestionAnswers = newValue.answeredQuestionAnswers
+            entryRoundNumber = newValue.entryRoundNumber
+            journalingHasStarted = newValue.journalingHasStarted
+            entryHistory = newValue.entryHistory
+
+        }
+    }
+
+    var entryHistoryModuleState: EntryHistoryModule.ModuleState {
+        get {
+            EntryHistoryModule.ModuleState(entryHistory: entryHistory)
+        }
+        set {
+            entryHistory = newValue.entryHistory
+        }
+    }
+
 }
 
 enum AppAction {
-    case answer(enteredAnswer: JournalQuestionAnswer.Answer)
-    case startJournaling
-    case stopJournaling
+    case entryHistoryModule(EntryHistoryModule.ModuleAction)
+    case journalingModule(JournalingModule.ModuleAction)
 }
 
-func reducer(state: inout AppState, action: AppAction) {
-    switch action {
-    case .answer(let answer):
-        let question = state.mainQuestionAnswers.questionsAnswers[state.entryRoundNumber].question
-        switch answer {
-        case .slider(let number):
-            state.answeredQuestionAnswers.append(.init(question: question, answer: .slider(number)))
-        case .text(let text):
-            state.answeredQuestionAnswers.append(.init(question: question, answer: .text(text)))
-        }
-        if state.entryRoundNumber >= state.mainQuestionAnswers.questionsAnswers.count - 1 {
-            state.journalingHasStarted = false
-            state.entryHistory.activities.append(.init(id: UUID(),
-                                                       timestamp: Date(),
-                                                       resultSet: state.answeredQuestionAnswers))
-        } else {
-            state.entryRoundNumber += 1
-        }
-    case .startJournaling:
-        state.entryRoundNumber = 0
-        state.answeredQuestionAnswers = []
-        state.journalingHasStarted = true
-    case .stopJournaling:
-        state.journalingHasStarted = false
-        // remove entries, later
-    }
-}
-
-typealias AppStore = Store<AppState, AppAction>
+let reducer = Reducer<AppState, AppAction, Void>.combine(
+    // must study these key paths and case paths, really cool
+    JournalingModule.reducer.pullback(state: \.journalModuleState,
+                                      action: /AppAction.journalingModule,
+                                      environment: { _ in }),
+    EntryHistoryModule.reducer.pullback(state: \.entryHistoryModuleState,
+                                        action: /AppAction.entryHistoryModule,
+                                        environment: { _ in })
+)

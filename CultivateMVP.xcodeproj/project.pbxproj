@@ -39,6 +39,8 @@
 		1281DE072575247400D5C710 /* EntryHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F7E1972523C15B001AD675 /* EntryHistory.swift */; };
 		1281DE6B25752C6F00D5C710 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1281DE6A25752C6F00D5C710 /* ComposableArchitecture */; };
 		1281DE6C25752C9C00D5C710 /* BedrockModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; };
+		12829834257E33EC00D37EFB /* BedrockModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; };
+		12829835257E33EC00D37EFB /* BedrockModels.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		12AC5056257A7C17001FD962 /* EntryHistoryModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC504D257A7C16001FD962 /* EntryHistoryModule.framework */; };
 		12AC505D257A7C17001FD962 /* EntryHistoryModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AC505C257A7C17001FD962 /* EntryHistoryModuleTests.swift */; };
 		12AC505F257A7C17001FD962 /* EntryHistoryModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 12AC504F257A7C17001FD962 /* EntryHistoryModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -103,19 +105,19 @@
 			remoteGlobalIDString = 1281DDF1257523F700D5C710;
 			remoteInfo = BedrockModels;
 		};
+		12829836257E33EC00D37EFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 126FC82A24292921008600D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1281DDF1257523F700D5C710;
+			remoteInfo = BedrockModels;
+		};
 		12AC5057257A7C17001FD962 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 126FC82A24292921008600D4 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 12AC504C257A7C16001FD962;
 			remoteInfo = EntryHistoryModule;
-		};
-		12AC5059257A7C17001FD962 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 126FC82A24292921008600D4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 126FC83124292921008600D4;
-			remoteInfo = CultivateMVP;
 		};
 		12AC5060257A7C17001FD962 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -137,6 +139,17 @@
 				1281DDBA2575211900D5C710 /* JournalingModule.framework in Embed Frameworks */,
 				12AC5063257A7C17001FD962 /* EntryHistoryModule.framework in Embed Frameworks */,
 				1281DDFA257523F700D5C710 /* BedrockModels.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12829838257E33EC00D37EFB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				12829835257E33EC00D37EFB /* BedrockModels.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12829834257E33EC00D37EFB /* BedrockModels.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,10 +636,12 @@
 				12AC5049257A7C16001FD962 /* Sources */,
 				12AC504A257A7C16001FD962 /* Frameworks */,
 				12AC504B257A7C16001FD962 /* Resources */,
+				12829838257E33EC00D37EFB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				12829837257E33EC00D37EFB /* PBXTargetDependency */,
 			);
 			name = EntryHistoryModule;
 			productName = EntryHistoryModule;
@@ -644,7 +660,6 @@
 			);
 			dependencies = (
 				12AC5058257A7C17001FD962 /* PBXTargetDependency */,
-				12AC505A257A7C17001FD962 /* PBXTargetDependency */,
 			);
 			name = EntryHistoryModuleTests;
 			productName = EntryHistoryModuleTests;
@@ -685,7 +700,6 @@
 					};
 					12AC5054257A7C17001FD962 = {
 						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 126FC83124292921008600D4;
 					};
 				};
 			};
@@ -1016,15 +1030,15 @@
 			target = 1281DDF1257523F700D5C710 /* BedrockModels */;
 			targetProxy = 1281DDF7257523F700D5C710 /* PBXContainerItemProxy */;
 		};
+		12829837257E33EC00D37EFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1281DDF1257523F700D5C710 /* BedrockModels */;
+			targetProxy = 12829836257E33EC00D37EFB /* PBXContainerItemProxy */;
+		};
 		12AC5058257A7C17001FD962 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 12AC504C257A7C16001FD962 /* EntryHistoryModule */;
 			targetProxy = 12AC5057257A7C17001FD962 /* PBXContainerItemProxy */;
-		};
-		12AC505A257A7C17001FD962 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 126FC83124292921008600D4 /* CultivateMVP */;
-			targetProxy = 12AC5059257A7C17001FD962 /* PBXContainerItemProxy */;
 		};
 		12AC5061257A7C17001FD962 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1234,6 +1248,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V9UM7VLDXC;
 				INFOPLIST_FILE = CultivateMVP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1254,6 +1269,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V9UM7VLDXC;
 				INFOPLIST_FILE = CultivateMVP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1531,7 +1547,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CultivateMVP.app/CultivateMVP";
 			};
 			name = Debug;
 		};
@@ -1551,7 +1566,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CultivateMVP.app/CultivateMVP";
 			};
 			name = Release;
 		};
