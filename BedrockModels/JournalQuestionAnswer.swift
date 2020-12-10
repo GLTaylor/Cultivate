@@ -1,15 +1,20 @@
 import Foundation
 
 public struct JournalQuestionAnswer: Equatable {
-    let question: String
-    var answer: Answer
+    public let question: String
+    public var answer: Answer
 
-    enum Answer: Equatable {
+    public init(question: String, answer: Answer) {
+        self.question = question
+        self.answer = answer
+    }
+
+    public enum Answer: Equatable {
         case slider(Int)
         case text(String)
     }
 
-    var isTextAnswer: Bool {
+    public var isTextAnswer: Bool {
         switch answer {
         case .slider:
             return false
@@ -19,14 +24,14 @@ public struct JournalQuestionAnswer: Equatable {
     }
 }
 
-public struct JournalQuestionsAnswers {
-    var questionsAnswers: [JournalQuestionAnswer]
+public struct JournalQuestionsAnswers: Equatable {
+    public var questionsAnswers: [JournalQuestionAnswer]
 
-     init(questionsAnswers: [JournalQuestionAnswer]) {
+    public init(questionsAnswers: [JournalQuestionAnswer]) {
         self.questionsAnswers = questionsAnswers
     }
 
-    static let defaultQuestionsAnswers = JournalQuestionsAnswers(questionsAnswers: [
+    public static let defaultQuestionsAnswers = JournalQuestionsAnswers(questionsAnswers: [
         .init(question: "How are you feeling today?", answer: .slider(0)),
         .init(question: "What's on your mind right now?", answer: .text("")),
         .init(question: "What are you thankful for today?", answer: .text("")),
