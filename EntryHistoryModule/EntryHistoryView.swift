@@ -1,40 +1,40 @@
 import SwiftUI
 import BedrockModels
 import ComposableArchitecture
+import DesignKit
 
 public struct EntryHistoryView: View {
-   let store: ModuleStore
+    let store: ModuleStore
 
     public init(store: ModuleStore) {
         self.store = store
     }
 
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .medium
-        return formatter
-    }()
-
     public var body: some View {
         WithViewStore(store) { viewStore in
-        NavigationView {
+                NavigationView {
                 List {
                     ForEach(viewStore.state.entryHistory.activities) { activity in
-                        VStack {
-                            Text("Completed at: \(self.dateFormatter.string(from: activity.timestamp))")
-                                .foregroundColor(.blue)
-                            Text("Activty: \(activity.resultSet[1].question)")
+                        NavigationLink(destination: SingleEntryView(activity: activity)) {
+                            VStack {
+                                Text("Cultivated: \(EntryDateFormatter.string(from: activity.timestamp))")
+                                    .foregroundColor(Color(ColorNameManager.Green.forrest))
+                                    .font(Font.custom(FontNameManager.Montserrat.medium, fixedSize: 20))
+                                    .padding()
+                                Text("Something you thought about: \(activity.resultSet.randomElement()!.question)")
+                                    .font(Font.custom(FontNameManager.Montserrat.semiBold, fixedSize: 16))
+                                    .multilineTextAlignment(.center)
+                            }
+                            .padding(5)
                         }
-                    .padding(5)
                     }
                     .onDelete { indexSet in
                         viewStore.send(.removeEntries(indexSet: indexSet))
-
                     }
                 }
-            .navigationBarTitle(Text("Log"))
+                .navigationBarTitle(Text("Your Entries"))
             }
+
         }
     }
 }
@@ -46,7 +46,7 @@ struct EntryHistoryView_Previews: PreviewProvider {
             .init(id: UUID(),
                   timestamp: Date(timeIntervalSinceNow: 10),
                   resultSet: [
-                    .init(question: "How are you?", answer: .text("Great"))
+                    .init(question: "How are you doing with everything?", answer: .text("Great"))
                     ]
                   )
             ]

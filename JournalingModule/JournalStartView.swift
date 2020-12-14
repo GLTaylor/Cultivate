@@ -16,26 +16,28 @@ public struct JournalStartView: View {
 
     public var body: some View {
         WithViewStore(store) { viewStore in
-            VStack {
-                Text("Let's begin to cultivate")
-                    .font(titleFont)
-                    .foregroundColor(Color(ColorNameManager.Green.forrest))
-                    .padding(.bottom, 40)
-                Button(action: { viewStore.send(.startJournaling)},
-                       label: { Text("Start Journaling")})
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color(ColorNameManager.Green.forrest))
-                    .cornerRadius(40)
-                    .font(buttonFont)
-                    .foregroundColor(Color((ColorNameManager.Green.forrest)))
-                    .sheet(isPresented: Binding.constant(viewStore.state.journalingHasStarted),
-                           onDismiss: { viewStore.send(.stopJournaling) },
-                           content: { JournalingView(store: self.store) })
+            Color(ColorNameManager.Grey.cloud).edgesIgnoringSafeArea(.all).overlay(
+                VStack {
+                    Text("Let's begin to cultivate")
+                        .font(titleFont)
+                        .foregroundColor(Color(ColorNameManager.Green.forrest))
+                        .padding(.bottom, 40)
+                    Button(action: { viewStore.send(.startJournaling)},
+                           label: { Text("Start Journaling")})
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color(ColorNameManager.Green.forrest))
+                        .cornerRadius(40)
+                        .font(buttonFont)
+                        .foregroundColor(Color((ColorNameManager.Green.forrest)))
+                        .sheet(isPresented: Binding.constant(viewStore.state.journalingHasStarted),
+                               onDismiss: { viewStore.send(.stopJournaling) },
+                               content: { JournalingView(store: self.store) })
 
-                latestEntry
-                    .padding(.top, 40)
-            }
+                    latestEntry
+                        .padding(.top, 40)
+                }
+            )
             //       if latestEntry was here, it becomes a second tab (?!)
         }
     }

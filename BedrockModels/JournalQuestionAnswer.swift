@@ -1,12 +1,14 @@
 import Foundation
 
-public struct JournalQuestionAnswer: Equatable {
+public struct JournalQuestionAnswer: Equatable, Identifiable {
     public let question: String
     public var answer: Answer
+    public var id: UUID
 
     public init(question: String, answer: Answer) {
         self.question = question
         self.answer = answer
+        self.id = UUID()
     }
 
     public enum Answer: Equatable {
