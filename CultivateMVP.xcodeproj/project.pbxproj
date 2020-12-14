@@ -41,6 +41,8 @@
 		1281DE6C25752C9C00D5C710 /* BedrockModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; };
 		12829834257E33EC00D37EFB /* BedrockModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; };
 		12829835257E33EC00D37EFB /* BedrockModels.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		128299262582846A00D37EFB /* SingleEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128299252582846A00D37EFB /* SingleEntryView.swift */; };
+		1282997525877F0800D37EFB /* EntryDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1282997425877F0800D37EFB /* EntryDateFormatter.swift */; };
 		12AC5056257A7C17001FD962 /* EntryHistoryModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC504D257A7C16001FD962 /* EntryHistoryModule.framework */; };
 		12AC505D257A7C17001FD962 /* EntryHistoryModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AC505C257A7C17001FD962 /* EntryHistoryModuleTests.swift */; };
 		12AC505F257A7C17001FD962 /* EntryHistoryModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 12AC504F257A7C17001FD962 /* EntryHistoryModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -191,6 +193,8 @@
 		1281DDF2257523F700D5C710 /* BedrockModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BedrockModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1281DDF4257523F700D5C710 /* BedrockModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BedrockModels.h; sourceTree = "<group>"; };
 		1281DDF5257523F700D5C710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		128299252582846A00D37EFB /* SingleEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEntryView.swift; sourceTree = "<group>"; };
+		1282997425877F0800D37EFB /* EntryDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDateFormatter.swift; sourceTree = "<group>"; };
 		12AC504D257A7C16001FD962 /* EntryHistoryModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EntryHistoryModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AC504F257A7C17001FD962 /* EntryHistoryModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntryHistoryModule.h; sourceTree = "<group>"; };
 		12AC5050257A7C17001FD962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -406,8 +410,10 @@
 			children = (
 				12E799AC257A80C00047EB15 /* ModuleState.swift */,
 				123F53A2252E15C500EE4927 /* EntryHistoryView.swift */,
+				128299252582846A00D37EFB /* SingleEntryView.swift */,
 				12AC504F257A7C17001FD962 /* EntryHistoryModule.h */,
 				12AC5050257A7C17001FD962 /* Info.plist */,
+				1282997425877F0800D37EFB /* EntryDateFormatter.swift */,
 			);
 			path = EntryHistoryModule;
 			sourceTree = "<group>";
@@ -985,7 +991,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				12E799BC257A80F40047EB15 /* EntryHistoryView.swift in Sources */,
+				128299262582846A00D37EFB /* SingleEntryView.swift in Sources */,
 				12E799AD257A80C00047EB15 /* ModuleState.swift in Sources */,
+				1282997525877F0800D37EFB /* EntryDateFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
