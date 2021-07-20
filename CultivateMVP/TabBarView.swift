@@ -34,6 +34,6 @@ private extension Image {
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView(store: AppStore(initialState: AppState(), reducer: reducer, environment: ()))
+        TabBarView(store: AppStore(initialState: AppState(), reducer: reducer, environment: .live))
     }
 }

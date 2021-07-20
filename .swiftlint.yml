@@ -1,5 +1,10 @@
 disabled_rules:
+  - line_length
   - identifier_name
   - nesting
+  - large_tuple
+  - function_parameter_count
+  - type_name
+  - shorthand_operator
 excluded:
-  - Pods
+  - ${PWD}/Pods

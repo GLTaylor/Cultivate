@@ -41,7 +41,7 @@ public struct EntryHistoryView: View {
 
 struct EntryHistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        var state = ModuleState()
+        var state = ModuleState(entryHistory: .empty)
         state.entryHistory.activities = [
             .init(id: UUID(),
                   timestamp: Date(timeIntervalSinceNow: 10),
@@ -51,7 +51,7 @@ struct EntryHistoryView_Previews: PreviewProvider {
                   )
             ]
 
-        return EntryHistoryView(store: ModuleStore(initialState: state, reducer: reducer, environment: ()))
+        return EntryHistoryView(store: ModuleStore(initialState: state, reducer: reducer, environment: .live))
 
     }
 

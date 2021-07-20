@@ -1,14 +1,15 @@
 import Foundation
+import SavingServiceKit
 
 public struct JournalQuestionAnswer: Equatable, Identifiable {
     public let question: String
-    public var answer: Answer
-    public var id: UUID
+    public let answer: Answer
+    public let id: UUID
 
-    public init(question: String, answer: Answer) {
+    public init(id: UUID = UUID(), question: String, answer: Answer) {
         self.question = question
         self.answer = answer
-        self.id = UUID()
+        self.id = id
     }
 
     public enum Answer: Equatable {
@@ -41,4 +42,58 @@ public struct JournalQuestionsAnswers: Equatable {
         .init(question: "What do you want your friends to ask you?", answer: .text("")),
         .init(question: "What's something you want to tell your tomorrow self?", answer: .text(""))
     ])
+}
+
+public extension JournalQuestionAnswer {
+    init(from model: SavableQuestionAnswer) {
+        self.init(id: model.id,
+                  question: model.question,
+                  answer: .init(from: model.answer))
+    }
+}
+
+public extension JournalQuestionAnswer.Answer {
+    init(from model: SavableQuestionAnswer.Answer) {
+        switch model {
+        case let .slider(value):
+            self = .slider(value)
+        case let .text(value):
+            self = .text(value)
+        }
+    }
+}
+
+public extension EntryHistory.Activity {
+    init(from model: SavableActivity) {
+        self.init(id: model.id,
+                  timestamp: model.timestamp,
+                  resultSet: model.resultSet.map(JournalQuestionAnswer.init))
+    }
+}
+
+public extension SavableQuestionAnswer {
+    init(from model: JournalQuestionAnswer) {
+        self.init(id: model.id,
+                  question: model.question,
+                  answer: .init(from: model.answer))
+    }
+}
+
+public extension SavableQuestionAnswer.Answer {
+    init(from model: JournalQuestionAnswer.Answer) {
+        switch model {
+        case let .slider(value):
+            self = .slider(value)
+        case let .text(value):
+            self = .text(value)
+        }
+    }
+}
+
+public extension SavableActivity {
+    init(from model: EntryHistory.Activity) {
+        self.init(id: model.id,
+                  timestamp: model.timestamp,
+                  resultSet: model.resultSet.map(SavableQuestionAnswer.init))
+    }
 }

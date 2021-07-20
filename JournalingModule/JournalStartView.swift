@@ -88,6 +88,6 @@ struct JournalStartView_Previews: PreviewProvider {
                                     question: "How you feelin",
                                     answer: .text("Be good to mom, she's going thru a lot"))))
         ]
-        return JournalStartView(store: ModuleStore(initialState: state, reducer: reducer, environment: ()))
+        return JournalStartView(store: ModuleStore(initialState: state, reducer: reducer, environment: .live))
     }
 }

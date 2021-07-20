@@ -1,6 +1,7 @@
 import Foundation
 import BedrockModels
 import ComposableArchitecture
+import SavingServiceKit
 
 public typealias ModuleStore = Store<ModuleState, ModuleAction>
 public typealias ModuleEffect = Effect<ModuleAction, Never>
@@ -10,6 +11,7 @@ public struct ModuleState: Equatable {
     public var answeredQuestionAnswers: [JournalQuestionAnswer]
     public var entryRoundNumber: Int
     public var journalingHasStarted: Bool
+    // could make history optional to not have to make it empty?
     public var entryHistory: EntryHistory
 
     public init(mainQuestionAnswers: JournalQuestionsAnswers = .defaultQuestionsAnswers,
@@ -32,7 +34,7 @@ public enum ModuleAction: Equatable {
     case stopJournaling
 }
 
-public let reducer = Reducer<ModuleState, ModuleAction, Void> { state, action, _  in
+public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { state, action, env  in
     // nothing with environment yet, will replace Void later w ModuleEnvironment
     switch action {
     case .answer(let answer):
@@ -49,6 +51,10 @@ public let reducer = Reducer<ModuleState, ModuleAction, Void> { state, action, _
                                                        timestamp: Date(),
                                                        resultSet: state.answeredQuestionAnswers),
                                                  at: 0)
+            try? env.persistenceDataProvider.saveData(
+                state.entryHistory.activities.map(SavableActivity.init)
+            )
+            // return env.effect here to save entryHistory
         } else {
             state.entryRoundNumber += 1
         }
