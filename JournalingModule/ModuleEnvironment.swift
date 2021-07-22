@@ -1,7 +1,5 @@
 import Foundation
 import SavingServiceKit
-// FOR LATER - can use this with some sort of remotely located questions provider, that needs to be loaded and such.
-// NOW - Not for loading but for saving. Do I need the date + id providers here?
 
 public struct ModuleEnvironment {
     var persistenceDataProvider: DataProvider
