@@ -1,4 +1,3 @@
-import Foundation
 import BedrockModels
 import ComposableArchitecture
 import SavingServiceKit
@@ -15,25 +14,17 @@ public struct ModuleState: Equatable {
 }
 
 public enum ModuleAction: Equatable {
-    case removeEntries(indexSet: IndexSet)
+    case loadHistory
 }
 
 public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { state, action, env in
     switch action {
-    case .removeEntries(let indexSet):
-        state.entryHistory.activities.remove(at: indexSet)
-        try? env.persistenceDataProvider.saveData(
-            state.entryHistory.activities.map(SavableActivity.init)
+    case .loadHistory:
+        state.entryHistory = .init(
+            activities: (try? env.persistenceDataProvider
+                .getAllData()
+                .map(EntryHistory.Activity.init)) ?? []
         )
-
-    }
-    return .none
-}
-
-private extension Array {
-    mutating func remove(at indexes: IndexSet) {
-        var enumerated = Swift.Array(self.enumerated())
-        enumerated.removeAll { indexes.contains($0.offset) }
-        self = enumerated.map { $0.element }
+        return .none
     }
 }

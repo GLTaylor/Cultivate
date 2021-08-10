@@ -1,11 +1,13 @@
 import BedrockModels
 import JournalingModule
 import EntryHistoryModule
+import HistoryLoader
 import ComposableArchitecture
+import SavingServiceKit
 
 typealias AppStore = Store<AppState, AppAction>
 
-struct AppState {
+struct AppState: Equatable {
     var mainQuestionAnswers = JournalQuestionsAnswers.defaultQuestionsAnswers
     var answeredQuestionAnswers: [JournalQuestionAnswer] = []
     var entryRoundNumber = 0
@@ -41,19 +43,32 @@ struct AppState {
         }
     }
 
+    var historyLoaderModuleState: HistoryLoader.ModuleState {
+        get {
+            HistoryLoader.ModuleState(entryHistory: entryHistory)
+        }
+        set {
+            entryHistory = newValue.entryHistory
+        }
+    }
+
 }
 
 enum AppAction {
     case entryHistoryModule(EntryHistoryModule.ModuleAction)
     case journalingModule(JournalingModule.ModuleAction)
+    case historyLoaderModule(HistoryLoader.ModuleAction)
 }
 
-let reducer = Reducer<AppState, AppAction, Void>.combine(
-    // must study these key paths and case paths, really cool
+let reducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
+    // key paths and case paths 
     JournalingModule.reducer.pullback(state: \.journalModuleState,
                                       action: /AppAction.journalingModule,
-                                      environment: { _ in }),
+                                      environment: { $0.journalModuleEnv }),
     EntryHistoryModule.reducer.pullback(state: \.entryHistoryModuleState,
                                         action: /AppAction.entryHistoryModule,
-                                        environment: { _ in })
+                                        environment: { $0.entryHistoryModuleEnv }),
+    HistoryLoader.reducer.pullback(state: \.historyLoaderModuleState,
+                                   action: /AppAction.historyLoaderModule,
+                                   environment: { $0.historyLoaderModuleEnv })
 )

@@ -1,5 +1,6 @@
 import UIKit
 import SwiftUI
+import ComposableArchitecture
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -9,7 +10,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
 
-        let contentView = TabBarView(store: AppStore(initialState: AppState(), reducer: reducer, environment: ()))
+        let store = AppStore(initialState: AppState(), reducer: reducer, environment: .live)
+
+        let contentView = TabBarView(store: store)
+
+        ViewStore(store).send(.historyLoaderModule(.loadHistory))
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

@@ -43,11 +43,11 @@ struct SingleEntryView_Previews: PreviewProvider {
             id: UUID(),
             timestamp: Date(timeIntervalSinceNow: 10),
             resultSet: [
-                .init(question: "How are you doing with everything?", answer: .text("Great")),
-                .init(question: "How are you doing with everything?", answer: .text("")),
-                .init(question: "What's your favorite number?", answer: .slider(6)),
-                .init(question: "What's on your mind?", answer: .text("Going home for Christmas")),
-                .init(question: "What did you eat for breakfast?", answer: .text("Oatmeal and it was so good."))
+                .init(id: .fakeUUID, question: "How are you doing with everything?", answer: .text("Great")),
+                .init(id: .fakeUUID, question: "How are you doing with everything?", answer: .text("")),
+                .init(id: .fakeUUID, question: "What's your favorite number?", answer: .slider(6)),
+                .init(id: .fakeUUID, question: "What's on your mind?", answer: .text("Going home for Christmas")),
+                .init(id: .fakeUUID, question: "What did you eat for breakfast?", answer: .text("Oatmeal and it was so good."))
             ]
         )
         return SingleEntryView(activity: activity)

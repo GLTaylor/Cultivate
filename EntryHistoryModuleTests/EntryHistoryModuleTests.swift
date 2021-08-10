@@ -7,15 +7,24 @@ class EntryHistoryModuleTests: XCTestCase {
     func testRemoveActivities() {
         let testStore = TestStore(
             initialState: ModuleState(entryHistory: EntryHistory.init(activities: [
-                .init(id: .fakeUUID, timestamp: Date(timeIntervalSince1970: 0), resultSet: [])
+                .init(id: .fakeUUID, timestamp: Date(timeIntervalSince1970: 0), resultSet: [
+                    .init(id: .fakeUUID, question: "First question", answer: .text("First answer"))
+                ]),
+                .init(id: .fakeUUID, timestamp: Date(timeIntervalSince1970: 0), resultSet: [
+                    .init(id: .fakeUUID, question: "Second question", answer: .text("Second Answer"))
+                ])
             ])),
             reducer: reducer,
-            environment: ()
+            environment: .mock
         )
 
         testStore.assert([
             .send(.removeEntries(indexSet: [0])) {
-                $0.entryHistory = .empty
+                $0.entryHistory = .init(activities: [
+                    .init(id: .fakeUUID, timestamp: Date(timeIntervalSince1970: 0), resultSet: [
+                        .init(id: .fakeUUID, question: "Second question", answer: .text("Second Answer"))
+                    ])
+                ])
             }
         ])
     }
@@ -25,5 +34,6 @@ class EntryHistoryModuleTests: XCTestCase {
 #if DEBUG
 extension UUID {
     static let fakeUUID = UUID()
+
 }
 #endif
