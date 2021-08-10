@@ -1,7 +1,6 @@
 import Foundation
 
 public struct DataProvider {
-    // fix the type
     public let saveData: ([SavableActivity]) throws -> Void
     public let getAllData: () throws -> [SavableActivity]
 

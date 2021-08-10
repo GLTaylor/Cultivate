@@ -54,9 +54,6 @@ public struct SavableQuestionAnswer: Codable, Identifiable {
     public let answer: Answer
 }
 
-// the whole Entry History is an array of Activities
-// so if we have SavableEntryHistory we'd have [SavableActivity] in it
-// but I don't think we need that cause that will just be the whole thing
 public struct SavableActivity: Codable, Identifiable {
 
     public init(id: UUID, timestamp: Date, resultSet: [SavableQuestionAnswer]) {

@@ -9,7 +9,6 @@ struct AppEnvironment {
     var historyLoaderModuleEnv: HistoryLoader.ModuleEnvironment
     var persistenceDataProvider: DataProvider
 
-    // fix the module envs later
     static let live = AppEnvironment(journalModuleEnv: .live,
                                      entryHistoryModuleEnv: .live,
                                      historyLoaderModuleEnv: .live,
