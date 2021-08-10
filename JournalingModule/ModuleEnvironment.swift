@@ -14,10 +14,9 @@ public struct ModuleEnvironment {
 }
 #if DEBUG
 extension ModuleEnvironment {
-    static let fakeUUID = UUID()
+    static let fakeUUID = UUID.fakeUUID
     public static let mock = ModuleEnvironment(
-//        fileManagerSaver: MyFileManager.fake,
-        persistenceDataProvider: .live,
+        persistenceDataProvider: .mock,
         dateProvider: { Date.init(timeIntervalSince1970: 10)},
         uuid: { .fakeUUID }
     )
@@ -26,6 +25,6 @@ extension ModuleEnvironment {
 
 #if DEBUG
 public extension UUID {
-    static let fakeUUID = UUID()
+    static let fakeUUID = UUID.init()
 }
 #endif

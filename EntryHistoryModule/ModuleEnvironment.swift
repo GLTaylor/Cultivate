@@ -15,3 +15,9 @@ extension ModuleEnvironment {
     )
 }
 #endif
+
+#if DEBUG
+public extension UUID {
+    static let fakeUUID = UUID.init()
+}
+#endif

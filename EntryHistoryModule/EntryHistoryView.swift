@@ -21,6 +21,7 @@ public struct EntryHistoryView: View {
                                     .foregroundColor(Color(ColorNameManager.Green.forrest))
                                     .font(Font.custom(FontNameManager.Montserrat.medium, fixedSize: 20))
                                     .padding()
+                                // fix to show an answered questioin
                                 Text("Something you thought about: \(activity.resultSet.randomElement()!.question)")
                                     .font(Font.custom(FontNameManager.Montserrat.semiBold, fixedSize: 16))
                                     .multilineTextAlignment(.center)
@@ -46,7 +47,7 @@ struct EntryHistoryView_Previews: PreviewProvider {
             .init(id: UUID(),
                   timestamp: Date(timeIntervalSinceNow: 10),
                   resultSet: [
-                    .init(question: "How are you doing with everything?", answer: .text("Great"))
+                    .init(id: .fakeUUID, question: "How are you doing with everything?", answer: .text("Great"))
                     ]
                   )
             ]

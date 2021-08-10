@@ -18,7 +18,15 @@ class JournalingModuleTests: XCTestCase {
 
         environment.dateProvider = { testDate }
 
-        let testStore = TestStore(initialState: ModuleState(), reducer: reducer, environment: environment)
+        let fakeModuleState = ModuleState(
+            mainQuestionAnswers: .fakeQuestionsAnswers,
+            answeredQuestionAnswers: [],
+            entryRoundNumber: 0,
+            journalingHasStarted: false,
+            entryHistory: .empty
+        )
+
+        let testStore = TestStore(initialState: fakeModuleState, reducer: reducer, environment: environment)
 
         testStore.assert(
             .send(.startJournaling) {
@@ -27,15 +35,27 @@ class JournalingModuleTests: XCTestCase {
                 $0.entryRoundNumber = 0
                 $0.answeredQuestionAnswers = []
             },
-            .send(.answer(enteredAnswer: .slider(7))) {
+            .send(.answer(enteredAnswer: .slider(4))) {
                 $0.answeredQuestionAnswers = [
                     JournalQuestionAnswer.init(
-                        question: "How are you feeling today?",
-                        answer: .slider(7))
+                        id: .fakeUUID,
+                        question: "How do you feel?",
+                        answer: .slider(4))
                 ]
                 $0.entryRoundNumber = 1
             }
         )
     }
 
+}
+
+public extension JournalQuestionsAnswers {
+    static let fakeQuestionsAnswers = JournalQuestionsAnswers(questionsAnswers: [
+        .init(id: .fakeUUID,
+              question: "How do you feel?",
+              answer: .slider(0)),
+        .init(id: .fakeUUID,
+              question: "Who was a friend today?",
+              answer: .text("Sarah"))
+    ])
 }

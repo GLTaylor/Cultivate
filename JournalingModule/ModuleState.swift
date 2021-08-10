@@ -35,15 +35,15 @@ public enum ModuleAction: Equatable {
 }
 
 public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { state, action, env  in
-    // nothing with environment yet, will replace Void later w ModuleEnvironment
     switch action {
     case .answer(let answer):
         let question = state.mainQuestionAnswers.questionsAnswers[state.entryRoundNumber].question
+        let uuid = state.mainQuestionAnswers.questionsAnswers[state.entryRoundNumber].id
         switch answer {
         case .slider(let number):
-            state.answeredQuestionAnswers.append(.init(question: question, answer: .slider(number)))
+            state.answeredQuestionAnswers.append(.init(id: uuid, question: question, answer: .slider(number)))
         case .text(let text):
-            state.answeredQuestionAnswers.append(.init(question: question, answer: .text(text)))
+            state.answeredQuestionAnswers.append(.init(id: uuid, question: question, answer: .text(text)))
         }
         if state.entryRoundNumber >= state.mainQuestionAnswers.questionsAnswers.count - 1 {
             state.journalingHasStarted = false
@@ -54,7 +54,6 @@ public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { sta
             try? env.persistenceDataProvider.saveData(
                 state.entryHistory.activities.map(SavableActivity.init)
             )
-            // return env.effect here to save entryHistory
         } else {
             state.entryRoundNumber += 1
         }
