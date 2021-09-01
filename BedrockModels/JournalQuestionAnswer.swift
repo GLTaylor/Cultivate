@@ -3,7 +3,7 @@ import SavingServiceKit
 
 public struct JournalQuestionAnswer: Equatable, Identifiable {
     public let question: String
-    public let answer: Answer
+    public var answer: Answer
     public let id: UUID
 
     public init(id: UUID, question: String, answer: Answer) {

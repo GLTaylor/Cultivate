@@ -12,10 +12,10 @@ struct JournalingView: View {
             Color(ColorNameManager.Grey.cloud).edgesIgnoringSafeArea(.all).overlay(
                 VStack(alignment: .leading) {
                     let roundNumber = viewStore.state.entryRoundNumber
-                    Text(viewStore.state.mainQuestionAnswers.questionsAnswers[roundNumber].question)
+                    Text(viewStore.state.questionsAnswers.questionsAnswers[roundNumber].question)
                         .font(Font.custom(FontNameManager.Montserrat.regular, size: 25))
-                    if viewStore.state.mainQuestionAnswers.questionsAnswers[roundNumber].isTextAnswer {
-                        TextField("Type here", text: $entryText)
+                    if viewStore.state.questionsAnswers.questionsAnswers[roundNumber].isTextAnswer {
+                        TextEditor(text: $entryText)
                             .font(Font.custom(FontNameManager.Montserrat.light, size: 20))
                         Button(action: {
                             viewStore.send(.answer(enteredAnswer: .text(self.entryText)))

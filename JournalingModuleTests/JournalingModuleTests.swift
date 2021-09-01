@@ -19,8 +19,7 @@ class JournalingModuleTests: XCTestCase {
         environment.dateProvider = { testDate }
 
         let fakeModuleState = ModuleState(
-            mainQuestionAnswers: .fakeQuestionsAnswers,
-            answeredQuestionAnswers: [],
+            questionsAnswers: .fakeQuestionsAnswers,
             entryRoundNumber: 0,
             journalingHasStarted: false,
             entryHistory: .empty
@@ -33,16 +32,37 @@ class JournalingModuleTests: XCTestCase {
                 $0.entryHistory = .empty
                 $0.journalingHasStarted = true
                 $0.entryRoundNumber = 0
-                $0.answeredQuestionAnswers = []
+                $0.questionsAnswers = .fakeQuestionsAnswers
             },
             .send(.answer(enteredAnswer: .slider(4))) {
-                $0.answeredQuestionAnswers = [
-                    JournalQuestionAnswer.init(
-                        id: .fakeUUID,
-                        question: "How do you feel?",
-                        answer: .slider(4))
-                ]
+                $0.questionsAnswers = .init(questionsAnswers: [
+                    .init(id: .fakeUUID,
+                          question: "How do you feel?",
+                          answer: .slider(4)),
+                    .init(id: .fakeUUID,
+                          question: "Who was a friend today?",
+                          answer: .text("")),
+                    .init(id: .fakeUUID,
+                          question: "What would you like the final answer to be?",
+                          answer: .text(""))
+                ])
                 $0.entryRoundNumber = 1
+                $0.journalingHasStarted = true
+            },
+            .send(.answer(enteredAnswer: .text("Text"))) {
+                $0.questionsAnswers = .init(questionsAnswers: [
+                    .init(id: .fakeUUID,
+                          question: "How do you feel?",
+                          answer: .slider(4)),
+                    .init(id: .fakeUUID,
+                          question: "Who was a friend today?",
+                          answer: .text("Text")),
+                    .init(id: .fakeUUID,
+                          question: "What would you like the final answer to be?",
+                          answer: .text(""))
+                ])
+                $0.entryRoundNumber = 2
+                $0.journalingHasStarted = true
             }
         )
     }
@@ -56,6 +76,9 @@ public extension JournalQuestionsAnswers {
               answer: .slider(0)),
         .init(id: .fakeUUID,
               question: "Who was a friend today?",
-              answer: .text("Sarah"))
+              answer: .text("")),
+        .init(id: .fakeUUID,
+              question: "What would you like the final answer to be?",
+              answer: .text(""))
     ])
 }

@@ -7,21 +7,18 @@ public typealias ModuleStore = Store<ModuleState, ModuleAction>
 public typealias ModuleEffect = Effect<ModuleAction, Never>
 
 public struct ModuleState: Equatable {
-    public var mainQuestionAnswers: JournalQuestionsAnswers
-    public var answeredQuestionAnswers: [JournalQuestionAnswer]
+    public var questionsAnswers: JournalQuestionsAnswers
     public var entryRoundNumber: Int
     public var journalingHasStarted: Bool
     // could make history optional to not have to make it empty?
     public var entryHistory: EntryHistory
 
-    public init(mainQuestionAnswers: JournalQuestionsAnswers = .defaultQuestionsAnswers,
-                answeredQuestionAnswers: [JournalQuestionAnswer] = [],
+    public init(questionsAnswers: JournalQuestionsAnswers = .defaultQuestionsAnswers,
                 entryRoundNumber: Int = 0,
                 journalingHasStarted: Bool = false,
                 entryHistory: EntryHistory = .empty
     ) {
-        self.mainQuestionAnswers = mainQuestionAnswers
-        self.answeredQuestionAnswers = answeredQuestionAnswers
+        self.questionsAnswers = questionsAnswers
         self.entryRoundNumber = entryRoundNumber
         self.journalingHasStarted = journalingHasStarted
         self.entryHistory = entryHistory
@@ -37,19 +34,15 @@ public enum ModuleAction: Equatable {
 public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { state, action, env  in
     switch action {
     case .answer(let answer):
-        let question = state.mainQuestionAnswers.questionsAnswers[state.entryRoundNumber].question
-        let uuid = state.mainQuestionAnswers.questionsAnswers[state.entryRoundNumber].id
-        switch answer {
-        case .slider(let number):
-            state.answeredQuestionAnswers.append(.init(id: uuid, question: question, answer: .slider(number)))
-        case .text(let text):
-            state.answeredQuestionAnswers.append(.init(id: uuid, question: question, answer: .text(text)))
-        }
-        if state.entryRoundNumber >= state.mainQuestionAnswers.questionsAnswers.count - 1 {
+        let uuid = state.questionsAnswers.questionsAnswers[state.entryRoundNumber].id
+
+        state.questionsAnswers.questionsAnswers[state.entryRoundNumber].answer = answer
+
+        if state.entryRoundNumber >= state.questionsAnswers.questionsAnswers.count - 1 {
             state.journalingHasStarted = false
             state.entryHistory.activities.insert(.init(id: UUID(),
                                                        timestamp: Date(),
-                                                       resultSet: state.answeredQuestionAnswers),
+                                                       resultSet: state.questionsAnswers.questionsAnswers),
                                                  at: 0)
             try? env.persistenceDataProvider.saveData(
                 state.entryHistory.activities.map(SavableActivity.init)
@@ -59,7 +52,7 @@ public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { sta
         }
     case .startJournaling:
         state.entryRoundNumber = 0
-        state.answeredQuestionAnswers = []
+//        state.questionsAnswers = JournalQuestionsAnswers.defaultQuestionsAnswers
         state.journalingHasStarted = true
         // eventually could return effect here, load questions from somewhere
     case .stopJournaling:
