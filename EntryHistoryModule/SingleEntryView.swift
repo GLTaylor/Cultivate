@@ -19,17 +19,20 @@ public struct SingleEntryView: View {
         VStack {
             Text(EntryDateFormatter.string(from: activity.timestamp))
                 .font(bigDateFont)
+            List {
+                ForEach(activity.resultSet) { set in
+                    if case JournalQuestionAnswer.Answer.text(let string) = set.answer {
+                        if string != "" {
+                            Text(set.question)
+                                .font(pastEntryTitle)
+                                .padding()
+                                .fixedSize(horizontal: false, vertical: true)
+                            Text("You answered: \(string)")
+                                .padding(.leading, 20)
+                                .padding(.trailing, 20)
+                                .fixedSize(horizontal: false, vertical: true)
 
-            ForEach(activity.resultSet) { set in
-                if case JournalQuestionAnswer.Answer.text(let string) = set.answer {
-                    if string != "" {
-                        Text(set.question)
-                            .font(pastEntryTitle)
-                            .padding()
-                        Text("You answered: \(string)")
-                            .padding(.leading, 20)
-                            .padding(.trailing, 20)
-
+                        }
                     }
                 }
             }

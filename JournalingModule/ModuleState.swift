@@ -34,8 +34,6 @@ public enum ModuleAction: Equatable {
 public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { state, action, env  in
     switch action {
     case .answer(let answer):
-        let uuid = state.questionsAnswers.questionsAnswers[state.entryRoundNumber].id
-
         state.questionsAnswers.questionsAnswers[state.entryRoundNumber].answer = answer
 
         if state.entryRoundNumber >= state.questionsAnswers.questionsAnswers.count - 1 {
@@ -52,7 +50,6 @@ public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { sta
         }
     case .startJournaling:
         state.entryRoundNumber = 0
-//        state.questionsAnswers = JournalQuestionsAnswers.defaultQuestionsAnswers
         state.journalingHasStarted = true
         // eventually could return effect here, load questions from somewhere
     case .stopJournaling:
