@@ -8,8 +8,7 @@ import SavingServiceKit
 typealias AppStore = Store<AppState, AppAction>
 
 struct AppState: Equatable {
-    var mainQuestionAnswers = JournalQuestionsAnswers.defaultQuestionsAnswers
-    var answeredQuestionAnswers: [JournalQuestionAnswer] = []
+    var questionsAnswers = JournalQuestionsAnswers.defaultQuestionsAnswers
     var entryRoundNumber = 0
     var journalingHasStarted = false
     var entryHistory = EntryHistory.empty
@@ -17,16 +16,14 @@ struct AppState: Equatable {
     var journalModuleState: JournalingModule.ModuleState {
         get {
             JournalingModule.ModuleState.init(
-                mainQuestionAnswers: mainQuestionAnswers,
-                answeredQuestionAnswers: answeredQuestionAnswers,
+                questionsAnswers: questionsAnswers,
                 entryRoundNumber: entryRoundNumber,
                 journalingHasStarted: journalingHasStarted,
                 entryHistory: entryHistory)
         }
 
         set {
-            mainQuestionAnswers = newValue.mainQuestionAnswers
-            answeredQuestionAnswers = newValue.answeredQuestionAnswers
+            questionsAnswers = newValue.questionsAnswers
             entryRoundNumber = newValue.entryRoundNumber
             journalingHasStarted = newValue.journalingHasStarted
             entryHistory = newValue.entryHistory

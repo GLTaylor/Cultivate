@@ -1,11 +1,11 @@
 import Foundation
 
-public struct ColorNameManager {
-    public struct Grey {
+public enum ColorNameManager {
+    public enum Grey {
         public static let cloud = "CloudGrey"
     }
 
-    public struct Green {
+    public enum Green {
         public static let forrest = "ForrestGreen"
     }
 }
