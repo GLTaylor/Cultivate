@@ -9,7 +9,7 @@ public struct JournalStartView: View {
         self.store = store
     }
 
-    let titleFont = Font.custom(FontNameManager.PTSerif.bold, size: 40)
+    let titleFont = Font.custom(FontNameManager.PTSerif.bold, size: 42)
     let buttonFont = Font.custom(FontNameManager.Montserrat.semiBold, size: 20)
     let pastEntryTitle = Font.custom(FontNameManager.Montserrat.italic, size: 20)
     let pastEntryText = Font.custom(FontNameManager.Montserrat.medium, size: 15)
