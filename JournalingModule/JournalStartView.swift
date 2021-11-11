@@ -85,7 +85,7 @@ struct JournalStartView_Previews: PreviewProvider {
             .init(id: UUID(),
                   timestamp: Date(timeIntervalSinceNow: 10),
                   resultSet: .init(arrayLiteral: .init(
-                                    id: .fakeUUID,
+                                    id: UUID.init(),
                                     question: "How you feelin",
                                     answer: .text("Be good to mom"))))
         ]

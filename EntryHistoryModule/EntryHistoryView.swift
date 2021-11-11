@@ -47,7 +47,7 @@ struct EntryHistoryView_Previews: PreviewProvider {
             .init(id: UUID(),
                   timestamp: Date(timeIntervalSinceNow: 10),
                   resultSet: [
-                    .init(id: .fakeUUID, question: "How are you doing with everything?", answer: .text("Great"))
+                    .init(id: UUID.init(), question: "How are you doing with everything?", answer: .text("Great"))
                     ]
                   )
             ]

@@ -1,4 +1,6 @@
-platform :ios, '13.0'
+platform :ios, '14.2'
+
+pod 'Firebase/Analytics'
 
 use_frameworks!
 inhibit_all_warnings!
