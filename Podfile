@@ -14,4 +14,5 @@ end
 
 target 'CultivateMVPTests' do
   pod 'RxSwift'
+  pod 'SwiftLint'
 end

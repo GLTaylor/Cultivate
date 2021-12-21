@@ -6,5 +6,9 @@ disabled_rules:
   - function_parameter_count
   - type_name
   - shorthand_operator
+  - function_body_length
+  - unused_optional_binding
+  - file_length
+  - switch_case_alignment
 excluded:
   - ${PWD}/Pods
