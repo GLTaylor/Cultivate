@@ -35,7 +35,7 @@ public struct JournalQuestionsAnswers: Equatable {
     }
 
     public static let defaultQuestionsAnswers = JournalQuestionsAnswers(questionsAnswers: [
-        .init(id: .init(), question: "How are you feeling today?", answer: .slider(0)),
+        .init(id: .init(), question: "How are you feeling today?", answer: .slider(5)),
         .init(id: .init(), question: "What's on your mind right now?", answer: .text("")),
         .init(id: .init(), question: "What are you thankful for today?", answer: .text("")),
         .init(id: .init(), question: "What is a beautiful thing you've seen?", answer: .text("")),

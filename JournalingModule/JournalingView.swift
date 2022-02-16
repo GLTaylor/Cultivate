@@ -4,45 +4,51 @@ import DesignKit
 
 struct JournalingView: View {
     let store: ModuleStore
-    @State var entryText = ""
-    @State var entryNumber: Double = 5
 
     var body: some View {
         WithViewStore(store) { viewStore in
             Color(ColorNameManager.Grey.cloud).edgesIgnoringSafeArea(.all).overlay(
                 VStack(alignment: .leading) {
+                    Button(action: { viewStore.send(.back) },
+                           label: { Text("back")})
                     let roundNumber = viewStore.state.entryRoundNumber
                     Text(viewStore.state.questionsAnswers.questionsAnswers[roundNumber].question)
                         .font(Font.custom(FontNameManager.Montserrat.regular, size: 25))
-                    if viewStore.state.questionsAnswers.questionsAnswers[roundNumber].isTextAnswer {
-                        TextEditor(text: $entryText)
+
+                    switch viewStore.state.questionsAnswers.questionsAnswers[roundNumber].answer {
+                    case .text(let text):
+                        TextEditor(text: .init(
+                            get: { text },
+                            set: { viewStore.send(.answerChanged(.text($0)))
+                        }))
                             .font(Font.custom(FontNameManager.Montserrat.light, size: 20))
                         Button(action: {
-                            viewStore.send(.answer(enteredAnswer: .text(self.entryText)))
-                            self.entryText = ""
-
+                            viewStore.send(.forward)
                         }, label: {
-                            if self.entryText == "" {
-                                Text("Skip")
-                                    .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
-                                    .accentColor(Color(ColorNameManager.Green.forrest))
+                            if text != "" {
+                            Text("Save")
+                                .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
+                                .accentColor(Color(ColorNameManager.Green.forrest))
                             } else {
-                                Text("Save")
-                                    .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
-                                    .accentColor(Color(ColorNameManager.Green.forrest))
+                            Text("Skip")
+                                .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
+                                .accentColor(Color(ColorNameManager.Green.forrest))
                             }
-                        })
+                            })
 
-                    } else {
-                        Slider(value: $entryNumber, in: 0...10, step: 1.0)
+                    case .slider(let number):
+                        Slider(value: .init(
+                            get: { Double(number) },
+                            set: { viewStore.send(
+                                .answerChanged(.slider(Int($0)))
+                            )}), in: 0...10, step: 1.0)
                             .accentColor(Color("ForrestGreen"))
                         Button(action: {
-                            viewStore.send(.answer(enteredAnswer: .slider(Int(self.entryNumber))))
+                            viewStore.send(.forward)
                         }, label: {
-                            Text("Save \(Int(entryNumber))")
+                            Text("Save \(Int(number))")
                                 .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
                                 .accentColor(Color("ForrestGreen"))
-
                         })
                     }
                 }.padding()

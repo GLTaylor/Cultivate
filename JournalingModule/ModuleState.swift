@@ -26,16 +26,16 @@ public struct ModuleState: Equatable {
 }
 
 public enum ModuleAction: Equatable {
-    case answer(enteredAnswer: JournalQuestionAnswer.Answer)
+    case forward
     case startJournaling
     case stopJournaling
+    case back
+    case answerChanged(JournalQuestionAnswer.Answer)
 }
 
 public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { state, action, env  in
     switch action {
-    case .answer(let answer):
-        state.questionsAnswers.questionsAnswers[state.entryRoundNumber].answer = answer
-
+    case .forward:
         if state.entryRoundNumber >= state.questionsAnswers.questionsAnswers.count - 1 {
             state.journalingHasStarted = false
             state.entryHistory.activities.insert(.init(id: UUID(),
@@ -54,6 +54,12 @@ public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { sta
         // eventually could return effect here, load questions from somewhere
     case .stopJournaling:
         state.journalingHasStarted = false
+    case .back:
+        if state.entryRoundNumber >= 1 {
+            state.entryRoundNumber -= 1
+    }
+    case .answerChanged(let answer):
+        state.questionsAnswers.questionsAnswers[state.entryRoundNumber].answer = answer
     }
 
     return .none
