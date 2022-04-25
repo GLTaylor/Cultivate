@@ -11,6 +11,8 @@ struct JournalingView: View {
                 VStack(alignment: .leading) {
                     Button(action: { viewStore.send(.back) },
                            label: { Text("back")})
+                    .font(Font.custom(FontNameManager.Montserrat.light, size: 20))
+                    .accentColor(Color(ColorNameManager.Green.fern))
                     let roundNumber = viewStore.state.entryRoundNumber
                     Text(viewStore.state.questionsAnswers.questionsAnswers[roundNumber].question)
                         .font(Font.custom(FontNameManager.Montserrat.regular, size: 25))
@@ -25,16 +27,18 @@ struct JournalingView: View {
                         Button(action: {
                             viewStore.send(.forward)
                         }, label: {
-                            if text != "" {
-                            Text("Save")
-                                .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
-                                .accentColor(Color(ColorNameManager.Green.forrest))
+                            if viewStore.state.entryRoundNumber >= viewStore.state.questionsAnswers.questionsAnswers.count - 1 {
+                                Text("Finish")
                             } else {
-                            Text("Skip")
-                                .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
-                                .accentColor(Color(ColorNameManager.Green.forrest))
+                                if text != "" {
+                                    Text("Save")
+                                } else {
+                                    Text("Skip")
+                                }
                             }
-                            })
+                        })
+                        .font(Font.custom(FontNameManager.Montserrat.semiBold, size: 20))
+                        .accentColor(Color(ColorNameManager.Green.forrest))
 
                     case .slider(let number):
                         Slider(value: .init(

@@ -7,5 +7,6 @@ public enum ColorNameManager {
 
     public enum Green {
         public static let forrest = "ForrestGreen"
+        public static let fern = "Fern"
     }
 }

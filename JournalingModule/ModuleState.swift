@@ -45,6 +45,7 @@ public let reducer = Reducer<ModuleState, ModuleAction, ModuleEnvironment> { sta
             try? env.persistenceDataProvider.saveData(
                 state.entryHistory.activities.map(SavableActivity.init)
             )
+            state.questionsAnswers = .defaultQuestionsAnswers
         } else {
             state.entryRoundNumber += 1
         }

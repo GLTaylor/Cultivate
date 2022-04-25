@@ -10,32 +10,39 @@ public struct EntryHistoryView: View {
         self.store = store
     }
 
+    let titleFont = Font.custom(FontNameManager.PTSerif.italic, size: 42)
+
     public var body: some View {
         WithViewStore(store) { viewStore in
                 NavigationView {
-                List {
-                    ForEach(viewStore.state.entryHistory.activities) { activity in
-                        NavigationLink(destination: SingleEntryView(activity: activity)) {
-                            VStack {
-                                Text("Cultivated: \(EntryDateFormatter.string(from: activity.timestamp))")
-                                    .foregroundColor(Color(ColorNameManager.Green.forrest))
-                                    .font(Font.custom(FontNameManager.Montserrat.medium, fixedSize: 20))
-                                    .padding()
-                                // fix to show an answered questioin
-                                Text("Something you thought about: \(activity.resultSet.randomElement()!.question)")
-                                    .font(Font.custom(FontNameManager.Montserrat.semiBold, fixedSize: 16))
-                                    .multilineTextAlignment(.center)
+                Color(ColorNameManager.Grey.cloud).edgesIgnoringSafeArea(.all).overlay(
+                    List {
+                        ForEach(viewStore.state.entryHistory.activities) { activity in
+                            NavigationLink(destination: SingleEntryView(activity: activity)) {
+                                VStack {
+                                    Text("Cultivated: \(EntryDateFormatter.string(from: activity.timestamp))")
+                                        .foregroundColor(Color(ColorNameManager.Green.forrest))
+                                        .font(Font.custom(FontNameManager.Montserrat.medium, fixedSize: 18))
+                                        .padding([.leading, .trailing], 5)
+                                        .multilineTextAlignment(.center)
+                                   let newSet = activity.resultSet.filter { thing in
+                                        thing.answer != .text("")
+                                    }
+                                    Text("Something you answered: \(newSet.randomElement()!.question)")
+                                        .font(Font.custom(FontNameManager.Montserrat.semiBold, fixedSize: 16))
+                                        .multilineTextAlignment(.center)
+                                        .padding(5)
+                                }
+                                .padding(5)
                             }
-                            .padding(5)
+                        }
+                        .onDelete { indexSet in
+                            viewStore.send(.removeEntries(indexSet: indexSet))
                         }
                     }
-                    .onDelete { indexSet in
-                        viewStore.send(.removeEntries(indexSet: indexSet))
-                    }
-                }
-                .navigationBarTitle(Text("Your Entries"))
+                    .navigationBarTitle(Text("Your Entries"))
+                )
             }
-
         }
     }
 }

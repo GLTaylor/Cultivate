@@ -9,7 +9,7 @@ public struct JournalStartView: View {
         self.store = store
     }
 
-    let titleFont = Font.custom(FontNameManager.PTSerif.bold, size: 42)
+    let titleFont = Font.custom(FontNameManager.PTSerif.italic, size: 42)
     let buttonFont = Font.custom(FontNameManager.Montserrat.semiBold, size: 20)
     let pastEntryTitle = Font.custom(FontNameManager.Montserrat.italic, size: 20)
     let pastEntryText = Font.custom(FontNameManager.Montserrat.medium, size: 15)
@@ -18,7 +18,7 @@ public struct JournalStartView: View {
         WithViewStore(store) { viewStore in
             Color(ColorNameManager.Grey.cloud).edgesIgnoringSafeArea(.all).overlay(
                 VStack {
-                    Text("Let's begin to cultivate")
+                    Text("Let's begin to cultivate 🌱")
                         .font(titleFont)
                         .foregroundColor(Color(ColorNameManager.Green.forrest))
                         .padding(.bottom, 40)
@@ -59,10 +59,10 @@ public struct JournalStartView: View {
                         return AnyView(
                             Group {
                                 VStack(spacing: 10) {
-                                    Text("Your last thought:")
+                                    Text("Your most recent thought:")
                                         .font(pastEntryTitle)
                                     Text("\"\(theString)\"")
-                                        .font(pastEntryText)
+                                        .font(pastEntryText).lineLimit(4)
                                 }
                             }.padding()
                         )

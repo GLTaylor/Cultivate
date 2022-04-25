@@ -1,6 +1,7 @@
 import SwiftUI
 import JournalingModule
 import EntryHistoryModule
+import DesignKit
 
 struct TabBarView: View {
     let store: AppStore
@@ -23,7 +24,7 @@ struct TabBarView: View {
                 .scaledToFit()
                 Text("Log")
             }
-        }
+        }.accentColor(Color(ColorNameManager.Green.forrest))
     }
 }
 

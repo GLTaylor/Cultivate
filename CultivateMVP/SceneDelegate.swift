@@ -1,7 +1,6 @@
 import UIKit
 import SwiftUI
 import ComposableArchitecture
-import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,7 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let contentView = TabBarView(store: store)
 
-        FirebaseApp.configure()
         ViewStore(store).send(.historyLoaderModule(.loadHistory))
 
         // Use a UIHostingController as window root view controller.

@@ -27,12 +27,18 @@ public struct SingleEntryView: View {
                                 .font(pastEntryTitle)
                                 .padding()
                                 .fixedSize(horizontal: false, vertical: true)
-                            Text("You answered: \(string)")
+                            Text("\(string)")
                                 .padding(.leading, 20)
                                 .padding(.trailing, 20)
                                 .fixedSize(horizontal: false, vertical: true)
 
                         }
+                    }
+                    if case JournalQuestionAnswer.Answer.slider(let number) = set.answer {
+                        Text("Your mood rating: \(String(number))")
+                            .font(pastEntryTitle)
+                            .padding()
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
             }
