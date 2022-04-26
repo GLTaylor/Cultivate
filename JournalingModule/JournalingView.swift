@@ -14,9 +14,14 @@ struct JournalingView: View {
                     .font(Font.custom(FontNameManager.Montserrat.light, size: 20))
                     .accentColor(Color(ColorNameManager.Green.fern))
                     let roundNumber = viewStore.state.entryRoundNumber
+                    let totalQuestions = viewStore.state.questionsAnswers.questionsAnswers.count - 1
+                    Text("QUESTION \(roundNumber) / \(totalQuestions)")
+                        .font(Font.custom(FontNameManager.Montserrat.regular, size: 15))
+                        .foregroundColor(Color(ColorNameManager.Grey.ash))
+                        .padding([.top, .bottom])
                     Text(viewStore.state.questionsAnswers.questionsAnswers[roundNumber].question)
                         .font(Font.custom(FontNameManager.Montserrat.regular, size: 25))
-
+                        .foregroundColor(Color(ColorNameManager.Grey.ash))
                     switch viewStore.state.questionsAnswers.questionsAnswers[roundNumber].answer {
                     case .text(let text):
                         TextEditor(text: .init(
@@ -27,7 +32,7 @@ struct JournalingView: View {
                         Button(action: {
                             viewStore.send(.forward)
                         }, label: {
-                            if viewStore.state.entryRoundNumber >= viewStore.state.questionsAnswers.questionsAnswers.count - 1 {
+                            if roundNumber >= totalQuestions {
                                 Text("Finish")
                             } else {
                                 if text != "" {

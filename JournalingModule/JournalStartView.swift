@@ -21,7 +21,7 @@ public struct JournalStartView: View {
                     Text("Let's begin to cultivate 🌱")
                         .font(titleFont)
                         .foregroundColor(Color(ColorNameManager.Green.forrest))
-                        .padding(.bottom, 40)
+                        .padding([.bottom, .top], 40)
                     Button(action: { viewStore.send(.startJournaling)},
                            label: { Text("Start Journaling")})
                         .padding()
@@ -63,6 +63,7 @@ public struct JournalStartView: View {
                                         .font(pastEntryTitle)
                                     Text("\"\(theString)\"")
                                         .font(pastEntryText).lineLimit(4)
+                                        .padding()
                                 }
                             }.padding()
                         )

@@ -11,7 +11,7 @@ public struct SingleEntryView: View {
 
     let bigDateFont = Font.custom(FontNameManager.PTSerif.bold, size: 40)
     let pastEntryTitle = Font.custom(FontNameManager.Montserrat.italic, size: 20)
-    let pastEntryText = Font.custom(FontNameManager.Montserrat.medium, size: 15)
+    let pastEntryText = Font.custom(FontNameManager.Montserrat.light, size: 15)
 
     // To Do: display nothing if you've skipped everything
 
@@ -31,6 +31,7 @@ public struct SingleEntryView: View {
                                 .padding(.leading, 20)
                                 .padding(.trailing, 20)
                                 .fixedSize(horizontal: false, vertical: true)
+                                .font(pastEntryText)
 
                         }
                     }
