@@ -34,7 +34,22 @@ class JournalingModuleTests: XCTestCase {
                 $0.entryRoundNumber = 0
                 $0.questionsAnswers = .fakeQuestionsAnswers
             },
-            .send(.answer(enteredAnswer: .slider(4))) {
+            .send(.answerChanged(.slider(4))) {
+                $0.questionsAnswers = .init(questionsAnswers: [
+                    .init(id: .fakeUUID,
+                          question: "How do you feel?",
+                          answer: .slider(4)),
+                    .init(id: .fakeUUID,
+                          question: "Who was a friend today?",
+                          answer: .text("")),
+                    .init(id: .fakeUUID,
+                          question: "What would you like the final answer to be?",
+                          answer: .text(""))
+                ])
+                $0.entryRoundNumber = 0
+                $0.journalingHasStarted = true
+            },
+            .send(.forward) {
                 $0.questionsAnswers = .init(questionsAnswers: [
                     .init(id: .fakeUUID,
                           question: "How do you feel?",
@@ -49,7 +64,7 @@ class JournalingModuleTests: XCTestCase {
                 $0.entryRoundNumber = 1
                 $0.journalingHasStarted = true
             },
-            .send(.answer(enteredAnswer: .text("Text"))) {
+            .send(.answerChanged(.text("Text"))) {
                 $0.questionsAnswers = .init(questionsAnswers: [
                     .init(id: .fakeUUID,
                           question: "How do you feel?",
@@ -61,7 +76,7 @@ class JournalingModuleTests: XCTestCase {
                           question: "What would you like the final answer to be?",
                           answer: .text(""))
                 ])
-                $0.entryRoundNumber = 2
+                $0.entryRoundNumber = 1
                 $0.journalingHasStarted = true
             }
         )

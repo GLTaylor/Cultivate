@@ -19,9 +19,7 @@
 		123749D926A9A89500ABA409 /* ModuleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123749D826A9A89500ABA409 /* ModuleState.swift */; };
 		123749DB26A9A98400ABA409 /* ModuleEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123749DA26A9A98400ABA409 /* ModuleEnvironment.swift */; };
 		123749DD26A9AB2900ABA409 /* BedrockModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; };
-		123749DE26A9AB2900ABA409 /* BedrockModels.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		123749E226A9AB5100ABA409 /* SavingServiceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124568DA26A6B4D900BF107D /* SavingServiceKit.framework */; };
-		123749E326A9AB5100ABA409 /* SavingServiceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 124568DA26A6B4D900BF107D /* SavingServiceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		123F53A1252E150A00EE4927 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F53A0252E150A00EE4927 /* TabBarView.swift */; };
 		123F53AB25391BAF00EE4927 /* PTSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 123F53AA25391B5D00EE4927 /* PTSerif-Regular.ttf */; };
 		123F53AC25391BB300EE4927 /* PTSerif-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 123F53A825391B4E00EE4927 /* PTSerif-BoldItalic.ttf */; };
@@ -34,7 +32,6 @@
 		124568E626A6B4F200BF107D /* SavableEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124568CF26A0794D00BF107D /* SavableEntries.swift */; };
 		124568E726A6B4F700BF107D /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124568D126A07D2600BF107D /* DataProvider.swift */; };
 		124568ED26A6BEE600BF107D /* SavingServiceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124568DA26A6B4D900BF107D /* SavingServiceKit.framework */; };
-		124568EE26A6BEE600BF107D /* SavingServiceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 124568DA26A6B4D900BF107D /* SavingServiceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		124568F326A7445500BF107D /* ModuleEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124568F226A7445500BF107D /* ModuleEnvironment.swift */; };
 		126FC83624292921008600D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC83524292921008600D4 /* AppDelegate.swift */; };
 		126FC83824292921008600D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126FC83724292921008600D4 /* SceneDelegate.swift */; };
@@ -58,7 +55,6 @@
 		1281DE6B25752C6F00D5C710 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1281DE6A25752C6F00D5C710 /* ComposableArchitecture */; };
 		1281DE6C25752C9C00D5C710 /* BedrockModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; };
 		12829834257E33EC00D37EFB /* BedrockModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; };
-		12829835257E33EC00D37EFB /* BedrockModels.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1281DDF2257523F700D5C710 /* BedrockModels.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		128299262582846A00D37EFB /* SingleEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128299252582846A00D37EFB /* SingleEntryView.swift */; };
 		1282997525877F0800D37EFB /* EntryDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1282997425877F0800D37EFB /* EntryDateFormatter.swift */; };
 		12AC5056257A7C17001FD962 /* EntryHistoryModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AC504D257A7C16001FD962 /* EntryHistoryModule.framework */; };
@@ -184,29 +180,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		123749E126A9AB2900ABA409 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				123749DE26A9AB2900ABA409 /* BedrockModels.framework in Embed Frameworks */,
-				123749E326A9AB5100ABA409 /* SavingServiceKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		124568F126A6BEE600BF107D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				124568EE26A6BEE600BF107D /* SavingServiceKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1281DDBE2575211900D5C710 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,17 +192,6 @@
 				1281DDFA257523F700D5C710 /* BedrockModels.framework in Embed Frameworks */,
 				123749D426A9A64500ABA409 /* HistoryLoader.framework in Embed Frameworks */,
 				124568E226A6B4DB00BF107D /* SavingServiceKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		12829838257E33EC00D37EFB /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				12829835257E33EC00D37EFB /* BedrockModels.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -689,7 +651,6 @@
 				123749C826A9A64500ABA409 /* Sources */,
 				123749C926A9A64500ABA409 /* Frameworks */,
 				123749CA26A9A64500ABA409 /* Resources */,
-				123749E126A9AB2900ABA409 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -778,7 +739,6 @@
 				1281DDA02575211900D5C710 /* Sources */,
 				1281DDA12575211900D5C710 /* Frameworks */,
 				1281DDA22575211900D5C710 /* Resources */,
-				124568F126A6BEE600BF107D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -838,7 +798,6 @@
 				12AC5049257A7C16001FD962 /* Sources */,
 				12AC504A257A7C16001FD962 /* Frameworks */,
 				12AC504B257A7C16001FD962 /* Resources */,
-				12829838257E33EC00D37EFB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
